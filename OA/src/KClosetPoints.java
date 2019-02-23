@@ -23,6 +23,7 @@ public class KClosetPoints {
         
         //Map<Point, Integer> map = new HashMap<>();
         Point[] ans = new Point[k];
+        //use a prorityqueue to 
         PriorityQueue<Point> pq = new PriorityQueue<Point> (k, new Comparator<Point> () {
             @Override
             public int compare(Point a, Point b) {
@@ -37,15 +38,16 @@ public class KClosetPoints {
         
         for (int i = 0; i < points.length; i++) {
             pq.offer(points[i]);
+            //check size
             if (pq.size() > k)
                 pq.poll();
         }
         
-        k = pq.size();
-        Point[] ret = new Point[k];  
-        while (!pq.isEmpty())
-            ret[--k] = pq.poll();
-        return ret;
+       // k = pq.size();
+        //Point[] ret = new Point[k];  
+        while ( !pq.isEmpty())
+            ans[--k] = pq.poll();
+        return ans;
     }
         
  
