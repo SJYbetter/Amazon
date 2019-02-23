@@ -3,7 +3,7 @@
 *.classpath
 *.project
 .DS_Store
-
+.idea
 # Log file
 *.log
 
