@@ -7,8 +7,7 @@ Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 
 */
 
-
-public int[] twoSum(int[] numbers, int target) {
+public int[] twoSum_sorted(int[] numbers, int target) {
     int i = 0, j = numbers.length-1;
 
     while (i < j){
@@ -18,3 +17,30 @@ public int[] twoSum(int[] numbers, int target) {
     }
     return new int[]{};
 }
+
+//R.T O(n^2)
+public int[] twoSum_unsorted(int[] nums, int target){
+    if (nums == null || nums.length == 0) return new int[]{};
+
+    for (int i = 0; i < nums.length-1; i++){
+        for (int j = i+1; j < nums.length; j++){
+            if (nums[i] + nums[j] == target) return new int[]{i,j};
+        }
+    }
+    return new int[]{};
+}
+
+
+public int[] twoSum_unsorted1(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        if (nums == null || nums.length == 0) return new int[]{};
+
+        for (int i = 0; i< nums.length; i++){
+            if (map.containsKey(nums[i])){
+                return new int[]{map.get(nums[i]), i};
+            }else{
+                map.put(target - nums[i], i);
+            }
+        }
+        return new int[]{};
+    }
