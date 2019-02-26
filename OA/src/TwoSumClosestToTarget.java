@@ -37,6 +37,24 @@ public class TwoSumCloset{
         return count;
     }
 
+    public int twoSumSmallerEqualTarget(int[] nums, int target) {
+        // write your code here
+        if (nums == null) return -1;
+        Arrays.sort(nums);
+        int count = 0;
+        for (int i = 0; i < nums.length-1; i++){
+            for (int j = i+1; j < nums.length; j++){
+                if (nums[i] + nums[j] <= target){
+                    count ++;
+                }
+            }
+        }
+        return count;        
+    }
+
+
+
+
 
 
 
