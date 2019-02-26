@@ -27,8 +27,7 @@ public class CommonWords {
 		Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
 		// go through this list
 		for (Record r : results) {
-			// check whether this student is in the map or not, if not, just put this
-			// student id in map
+			// check whether this student is in the map or not, if not, just put this student id in map
 			if (!map.containsKey(r.id)) {
 				map.put(r.id, new PriorityQueue<>());
 			}

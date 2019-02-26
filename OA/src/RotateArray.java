@@ -18,8 +18,8 @@ public class Solution {
         // Write your code here
         // avoid the k maybe larger than the length of nums
         int K = k % nums.length;
-        reverse(nums, 0, nums.length - K-1);
-        reverse(nums, nums.length - K, nums.length-1);
+        reverse(nums, 0, nums.length-K-1);
+        reverse(nums, nums.length-K, nums.length-1);
         reverse(nums, 0, nums.length-1);
         return nums;
     }
