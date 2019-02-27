@@ -1,4 +1,5 @@
 public class TwoSumCloset{
+    //最接近的值是输出
     public int twoSumClosetTarget(int[] nums, int target){
         if (nums == null || nums.length == 0) return -1;
 
@@ -54,22 +55,5 @@ public class TwoSumCloset{
         }
         return count;
     }
-
-
-    
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
 
 }

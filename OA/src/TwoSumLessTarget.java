@@ -2,27 +2,25 @@ import java.util.Collections;
 import java.util.List;
 
 public class TwoSumLessTarget {
-	
-	public static double[] twoSumLessTarget(List<Double> list, double target) {
-		double[] ans = new double[2];
-		
-		if (list == null || list.size() < 2) return ans;
-		
-		Collections.sort(list);
-		int left = 0, right = list.size()-1;
-		
-		while (left < right) {
-			
-			
-			if (list.get(left) + list.get(right) < target) {
-				left ++;
-				
-			}else if (list.get(left) + list.get(right) == target) {
-				ans[0] = list.get(left), ans[1] = list.get(right);
-				
-			}else if ()
-			
+
+	public static int[] twoSumLessTarget(int[] nums, int target) {
+		int[] answer = new int[2];
+		if (nums == null || nums.length == 0) return answer;
+		Arrays.sort(nums);
+		int left = 0, right = nums.length-1;
+		int distance = Integer.MAX_VALUE;
+		while (left < right){
+			int current = nums[left] + nums[right];
+			int diff = target - current;
+			if (diff < distance && diff >= 0){
+				distance = diff;
+				answer[0] = nums[left];
+				answer[1] = nums[right];
+			}
+			if (current < target) left ++;
+			else right -;
 		}
+		return answer;
 	}
 
 	public static void main(String[] args) {
