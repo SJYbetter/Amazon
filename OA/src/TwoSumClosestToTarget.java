@@ -38,6 +38,8 @@ public class TwoSumCloset{
         return count;
     }
 
+
+    //小于等于target的pair输出有多少对
     public int twoSumSmallerEqualTarget(int[] nums, int target) {
         // write your code here
         if (nums == null) return -1;
@@ -52,6 +54,11 @@ public class TwoSumCloset{
         }
         return count;
     }
+
+
+
+
+}
 
 
 

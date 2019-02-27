@@ -6,7 +6,7 @@ import java.util.Set;
 public class KDistinct {
 
 
-    public int countkDist(String str, int k){
+    public static int countkDist(String str, int k){
         //corner case
         if(str == null || str.length() < k || k > 26) return 0;
         // HashSet to avoid duplicate substring, HashMap to store chars in tmp string
@@ -31,7 +31,7 @@ public class KDistinct {
 
 
 //return the count of substring of length K and exactly K distinct characters.
-	public int KDistincKSize(Stirng stringIn, int K){
+	public static int KDistincKSize(String stringIn, int K){
 		if (stringIn == null || "".equals(stringIn) || K<=0) return 0;
 
 		Set<String> set = new HashSet<>();
@@ -55,4 +55,34 @@ public class KDistinct {
         }
         return set.size();
 	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String a = "aaaabbbbbc";
+		System.out.println(countkDist(a,3));
+		System.out.println(KDistincKSize(a,3));
+      
+	}
+}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
