@@ -4,6 +4,7 @@ public class{
                 for (int i = 0; i < key.length; i++){
                         ans = (ans*33 + (int)(key[i])) % HASH_SIZE;
                 }
+                // return type
                 return (int)ans;
         }
 }

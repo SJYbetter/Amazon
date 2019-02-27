@@ -3,34 +3,37 @@ import javax.swing.tree.TreeNode;
 public class MaxAverageSubtree {
     private class treeFamily {
         int sum;
-        int cnt;
+        int count;
         treeFamily(int sum, int count) {
             this.sum = sum;
-            this.cnt = count;
+            this.count = count;
         }
     }
-     
+
     private TreeNode res = null;
     private treeFamily family = new treeFamily(0, 0);
     public TreeNode findSubtree2(TreeNode root) {
         helper(root);
         return res;
     }
-     
-    private treeFamily helper(TreeNode t) {
-        if(t == null) return new treeFamily(0, 0);
-        treeFamily left = helper(t.left);
-        treeFamily right = helper(t.right);
-        treeFamily tmp = new treeFamily(left.sum + right.sum + t.val, left.cnt + right.cnt + 1);
-        if(res == null || tmp.sum * family.cnt > tmp.cnt * family.sum) {
-            res = t;
+
+    private treeFamily helper(TreeNode node) {
+        //recursion exit
+        if(node == null) return new treeFamily(0, 0);
+        //devide
+        treeFamily left = helper(node.left);
+        treeFamily right = helper(node.right);
+        //conquer
+        treeFamily tmp = new treeFamily(left.sum + right.sum + node.val, left.cnt + right.cnt + 1);
+        if(res == null || tmp.sum * family.count > tmp.count * family.sum) {
+            res = node;
             family = tmp;
         }
         return tmp;
     }
 }
- 
-/* n-ary tree
+
+// n-ary tree
 public class Solution{
     class TreeFamily {
         ComponentNode root;
@@ -42,19 +45,19 @@ public class Solution{
             this.size = size;
         }
     }
- 
+
     private TreeFamily res = null;
     public ComponentNode highestSpeed(ComponentNode root) {
         helper(root);
         return res.root;
     }
- 
+
     private TreeFamily helper(ComponentNode root) {
         if(root == null) {
             return new TreeFamily(null, 0, 0);
         }
-        // if(root.components == null || root.componenets.size() == 0) 
-        //    return new TreeFamily(root, root.val, 1); 
+        // if(root.components == null || root.componenets.size() == 0)
+        //    return new TreeFamily(root, root.val, 1);
         List<TreeFamily> nodes = new ArrayList<>();
         for(ComponentNode t: root.componenets) {
             nodes.add(helper(t));
@@ -72,10 +75,6 @@ public class Solution{
         }
         return tmp;
     }
-*/
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-	}
 
 }

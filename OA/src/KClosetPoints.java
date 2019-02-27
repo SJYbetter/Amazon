@@ -1,4 +1,7 @@
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 
 /*
@@ -18,7 +21,7 @@ public class KClosetPoints {
     public Point[] kClosest(Point[] points, Point origin, int k) {
         // write your code here
         global_origin = origin;
-
+        //corner case
         if (points == null || points.length == 0) return points;
 
         //Map<Point, Integer> map = new HashMap<>();
@@ -92,6 +95,7 @@ public class KClosetPoints1{
     }
 }
 
+//以matrix的形式给出，new一个新的comparator就好了
 public class KClosetPoints2{
 	public int[][] kCloset(int[][] points, int k){
 		PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> (p2[0]*p2[0] + p2[1]*p2[1] - p1[0]*p1[0] - p1[1]*p1[1]));
