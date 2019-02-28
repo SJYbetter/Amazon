@@ -55,11 +55,14 @@ public class KDistinct {
 
     //k长度 刚刚好k-1个不同的字符的子串
 	public List<String> subStringK1(String s, int k){
-		if (s == null || "".equals(s) || k > 26) return 0;
-        //key is the character, value is corresponding frequency
-        Map<Character, Integer> lookup = new HashMap<Character, Integer>();
-        //answer by using set to avoid depulicate
+
+		if (s == null || "".equals(s) || k > 26) return new ArrayList<>();
+
         List<String> answer = new ArrayList<>();
+        //key is the character, value is corresponding frequency
+        Map<Character, Integer> lookup = new HashMap<>();
+
+
 
         for(int i = 0; i+k < s.length(); i++){
         	String item = s.substring(i, i+k);
