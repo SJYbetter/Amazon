@@ -3,15 +3,18 @@ public class LongestPalindrome {
 
 	public String longestPalindrome(String s) {
 		// edge case
-		if (s == null || s.length() < 1)
-			return "";
+		if (s == null || s.length() < 1) return "";
 		int start = 0;
 		int end = 0;
 
 		for (int i = 0; i < s.length(); i++) {
+			//odd length
 			int len1 = isPalin(s, i, i);
+			//even length
 			int len2 = isPalin(s, i, i + 1);
+			//select the longest
 			int len = Math.max(len1, len2);
+			//update the two pointers' position
 			if (len > end - start) {
 				start = i - (len - 1) / 2;
 				end = i + len / 2;

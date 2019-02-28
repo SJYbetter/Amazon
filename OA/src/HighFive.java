@@ -7,11 +7,10 @@ import java.util.Queue;
  * Definition for a Record class Record { public int id, score; public
  * Record(int id, int score){ this.id = id; this.score = score; } }
  */
-public class CommonWords {
+public class HighFive {
 	// definition of record
 	class Record {
 		public int id, score;
-
 		public Record(int id, int score) {
 			this.id = id;
 			this.score = score;
@@ -19,13 +18,12 @@ public class CommonWords {
 	}
 
 	public Map<Integer, Double> highFive(Record[] results) {
-		// Write your code here
-		// store answer
+
+		// store answer, key is the id of students, value is the average of highest five scores
 		Map<Integer, Double> answer = new HashMap<>();
-		// use a map to store the information, key is the id, and the value is this id
-		// corresponding highest five scores
+		// use a map to store the information, key is the id, value is highest five scores in pq
 		Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
-		// go through this list
+
 		for (Record r : results) {
 			// check whether this student is in the map or not, if not, just put this student id in map
 			if (!map.containsKey(r.id)) {
@@ -34,17 +32,18 @@ public class CommonWords {
 			// 已经把新的id 放到这个map里了， 所以取出来，然后加成绩， 因为上一步没有加成绩的
 			PriorityQueue<Integer> pq = map.get(r.id);
 
+            //check pq size first
 			if (pq.size() < 5)
 				pq.add(r.score);
 			else {
-				// 如果size（）大于5了，就要判断一下加还是不加，依据是取出来minheap的顶端score，和目前的score相比较
+				//size > 5, check the peak record
 				if (pq.peek() < r.score) {
 					pq.poll();
 					pq.add(r.score);
 				}
 			}
 		}
-
+        //go through the map and calculate the mean of highest five score
 		for (Map.Entry<Integer, PriorityQueue<Integer>> entry : map.entrySet()) {
 			int id = entry.getKey();
 			PriorityQueue<Integer> hiveScores = entry.getValue();
