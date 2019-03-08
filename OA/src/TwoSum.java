@@ -6,7 +6,7 @@ Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 
 */
-
+//using two pointers, one from the left, and another from the right
 public int[] twoSum_sorted(int[] numbers, int target) {
     int i = 0, j = numbers.length-1;
 
@@ -18,7 +18,7 @@ public int[] twoSum_sorted(int[] numbers, int target) {
     return new int[]{};
 }
 
-//R.T O(n^2)
+//R.T O(n^2) using two pointers
 public int[] twoSum_unsorted(int[] nums, int target){
     if (nums == null || nums.length == 0) return new int[]{};
 
@@ -30,7 +30,7 @@ public int[] twoSum_unsorted(int[] nums, int target){
     return new int[]{};
 }
 
-
+//R.T O(N), space complexity is O(N)
 public int[] twoSum_unsorted1(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         if (nums == null || nums.length == 0) return new int[]{};
