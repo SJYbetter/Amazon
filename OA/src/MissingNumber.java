@@ -9,6 +9,7 @@ Output: 8
 
 
 class MissingNumber {
+    //using
     public int missingNumber(int[] nums) {
         if (nums == null || nums.length == 0) return -1;
         int[] check = new int[nums.length+1];
@@ -19,5 +20,29 @@ class MissingNumber {
             if (check[j] == 0) return j;
         }
         return -1;
+    }
+
+    //using sum method
+    public int missingNumber2(int[] nums){
+        if (nums == null || nums.length == 0) return -1;
+        int len = nums.length;
+        int sum = (len+1) * len / 2;
+        for (int i = 0; i < len; i++){
+             sum -= nums[i];
+        }
+        return sum;
+    }
+
+    //using binarySearch
+    public int missingNumber3(int[] nums){
+        if (nums == null || nums.length == 0) return -1;
+        Arrays.sort(nums);
+        int left = 0, right = nums.length;
+        while (left < right){
+            int mid = (left + right)/2;
+            if (nums[mid] > mid) right = mid;
+            else left = mid+1;
+        }
+        return left;
     }
 }
