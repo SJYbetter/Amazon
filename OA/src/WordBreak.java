@@ -2,12 +2,11 @@ public class wordBreak{
 
 
 //R.T O(n^2) where n is the length of string s
-//DP 
+//DP
 public boolean wordBreak(String s, Set<String> dict) {
     // write your code here
 
     if(s == null || "".equals(s)) return true;
-
     boolean[] bs = new boolean[s.length() + 1];
     bs[0] = true;
 

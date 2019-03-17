@@ -9,7 +9,7 @@ Output: 8
 
 
 class MissingNumber {
-    //using
+    //using check method
     public int missingNumber(int[] nums) {
         if (nums == null || nums.length == 0) return -1;
         int[] check = new int[nums.length+1];
@@ -22,7 +22,7 @@ class MissingNumber {
         return -1;
     }
 
-    //using sum method
+    //using sum method the correct sum minus the missingNumber values
     public int missingNumber2(int[] nums){
         if (nums == null || nums.length == 0) return -1;
         int len = nums.length;

@@ -4,11 +4,11 @@ public class WindowSum {
 	先计算出前 k 个元素之和
 	然后循环遍历数组减去头部元素加上尾部元素
 
-	*/	
+	*/
 	public static int[] winSum(int[] nums, int k) {
 		if (nums == null || nums.length < k || k == 0) return new int[0];
 		int[] sums = new int[nums.length-k+1];
-		
+		//sum the first k numbers
 		for (int i = 0; i < k; i++) {
 			sums[0] += nums[i];
 		}
