@@ -21,6 +21,33 @@ public class Solution{
     }
 
     //输出这个subarray
+    public int[] maxSubArray1(int[] nums1){
+        if (nums1 == null || nums1.length == 0) return new int[]{};
+
+        int[] prefix = new int[nums1.length+1];
+        prefix[0] = 0;
+        for (int i = 1; i <= nums1.length; i++){
+            prefix[i] = prefix[i-1] + nums1[i-1];
+        }
+
+        int small = Integer.MAX_VALUE, big = Integer.MIN_VALUE;
+        for (int i = 0; i < prefix.length; i++){
+            if (prefix[i] < small){
+                small = i;
+            }
+            if (prefix[i] > big){
+                big = i;
+            }
+        }
+
+        if (small > big) return new int[]{};
+        int[] ans = new int[big-small];
+        for (int i = 0; i < big-small; i++){
+            ans[i] = nums1[small++];
+        }
+        return ans;
+    }
+
 
 
 
