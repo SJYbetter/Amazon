@@ -28,8 +28,9 @@ class Solution {
         }
         while (!pq.isEmpty()){
             temp.next = pq.poll();
+            //move temp 
             temp = temp.next;
-            
+
             if (temp.next != null){
                 pq.add(temp.next);
             }

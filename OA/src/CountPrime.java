@@ -18,17 +18,8 @@ class Solution {
     }
 
 
-    public int nthPrime(int n){
-        int count = 0;
-        int i = 2;
-        while (count <= n){
-            if (isPrime(i++)) count++;
-            if (count == n) break;
-        }
-        return i;
-    }
-
     private boolean isPrime(int n){
+        if (n <= 1) return false;
         if (n == 2) return true;
         for (int i = 2; i <= (int) Math.sqrt(n); i++){
             if (n % i == 0) return false;

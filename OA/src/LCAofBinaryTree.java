@@ -5,7 +5,7 @@ public class LCA{
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
         //p and q are in two sides
-        if (left != null || right != null) return root;
+        if (left != null && right != null) return root;
         //p and q are in one side
         return left != null ? left : right;
     }

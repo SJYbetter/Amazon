@@ -20,6 +20,7 @@ public class Interval{
         int last = intervals[0].end;
         for (int i = 1; i < intervals.length; i++){
             if (last > intervals[i].start) return false;
+            //update last
             last = Math.max(intervals[i].end, last);
         }
         return true;
@@ -44,7 +45,7 @@ class Solution {
         int endId = 0, roomNumber = 0;
         for (int i = 0; i <intervals.length; i++){
             if (s[i] < e[endId]) roomNumber += 1;
-            else endId++;
+            else endId ++;
         }
         return roomNumber;
     }
