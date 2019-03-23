@@ -1,5 +1,5 @@
 class Solution {
-    //1. remove all front white space  2. decide positive or negative  3. start with number rather than number 4. >than 2^32-1 
+    //1. remove all front white space  2. decide positive or negative  3. start with number rather than number 4. >than 2^32-1 overflow
 
     public int myAtoi(String str) {
 
