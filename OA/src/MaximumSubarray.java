@@ -19,6 +19,18 @@ public class Solution{
         }
         return max;
     }
+    
+    //easy to understand
+    public int maxSubArray2(int[] nums){
+        if (nums == null || nums.length == 0) return -1;
+        int maxEndHere = nums[0];
+        int maxSoFar = nums[0];
+        for (int i = 1; i < nums.length; i++){
+            maxEndHere = Math.max(maxEndHere+nums[i], nums[i]);
+            maxSoFar = Math.max(maxEndHere, maxSoFar);
+        }
+        return maxSoFar;
+    }
 
     //输出这个subarray
     public int[] maxSubArray1(int[] nums1){
