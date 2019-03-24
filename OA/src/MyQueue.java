@@ -3,40 +3,52 @@
 注意empty（）方法
 */
 
-public class MyQueue{
-        //注意类型
-        private Stack<Integer> s1, s2;
+class MyQueue {
 
-        public MyQueue{
-                s1 = new Stack<Integer>();
-                s2 = new Stack<Integer>();
-        }
-        //取stack的最底下元素，要先把一个stack的元素移动到另外一个stack
-        private void moveTo(){
-                while (!s2.empty()){
-                        s1.push(s2.peek());
-                        s2.pop();
-                }
-        }
-        public void push(int x){
-                s2.push(x);
-        }
+    private Stack<Integer> stack1, stack2;
 
-        public int pop(int x){
-                while (s1.empty() == true){
-                        this.moveTo();
-                }
-                return s1.pop();
 
+    /** Initialize your data structure here. */
+    public MyQueue() {
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
+    }
+
+    /** Push element x to the back of queue. */
+    public void push(int x) {
+        stack2.push(x);
+    }
+
+    private void moveTo(){
+        while (!stack2.empty()){
+            stack1.push(stack2.peek());
+            stack2.pop();
         }
+    }
 
-        public int top(){
-                while (s1.empty() == true){
-                        this.moveTo();
-                }
-                return s1.peek();
+    /** Removes the element from in front of queue and returns that element. */
+    public int pop() {
+        if (stack1.empty() == true){
+            this.moveTo();
         }
+        return stack1.pop();
 
+    }
+
+    /** Get the front element. */
+    public int peek() {
+        if (stack1.empty()){
+            this.moveTo();
+        }
+        return stack1.peek();
+
+    }
+
+    /** Returns whether the queue is empty. */
+    public boolean empty() {
+        return stack1.size() == 0 && stack2.size() == 0;
+
+    }
 }
 
 
