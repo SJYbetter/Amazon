@@ -16,8 +16,9 @@ public class TwoSumLessTarget {
 			int current = nums[left] + nums[right];
 			//cureent_diff is to calculate the distance between target and the sum of two pointers
 			int cureent_diff = target - current;
-			//less than the target so make sure d
+			//less than the target so make sure
 			if (cureent_diff  < distance && cureent_diff >= 0){
+				//update  distance and answer
 				distance = cureent_diff ;
 				answer[0] = nums[left];
 				answer[1] = nums[right];
@@ -53,7 +54,7 @@ public class TwoSumLessTarget {
 	}
 
 
-	
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

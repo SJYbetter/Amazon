@@ -22,6 +22,7 @@ public class Solution{
                     if (word.equals(end)) {
                         return length;
                     }
+                    //extension
                     q.offer(word);
                     check.add(word);
                  }
