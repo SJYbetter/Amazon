@@ -1,6 +1,7 @@
 public class MinStack {
     Stack<Integer> stack;
     Stack<Integer> minstack;
+
     public MinStack() {
         // do intialization if necessary
         stack = new Stack<>();
@@ -41,8 +42,6 @@ public class MinStack {
     public int min() {
         // write your code here
         return minstack.peek();
-
         //find mini
-
     }
 }

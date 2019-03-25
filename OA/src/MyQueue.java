@@ -6,8 +6,6 @@
 class MyQueue {
 
     private Stack<Integer> stack1, stack2;
-
-
     /** Initialize your data structure here. */
     public MyQueue() {
         stack1 = new Stack<>();

@@ -46,11 +46,6 @@ public class MaxAverageSubtree {
         return fix_max_node(new NodeSummary(child_total + node.val, child_count + 1), node);
     }
 
-
-
-
-
-
     public static void main(String[] argv) {
         TreeNode root = new TreeNode();
 
