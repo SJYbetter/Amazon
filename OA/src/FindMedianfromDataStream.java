@@ -33,12 +33,13 @@ class MedianFinder {
         }
 
         if (size != 0){
+            //add median
             if (num <= median){
                 maxHeap.offer(num);
             }else{
                 minHeap.offer(num);
             }
-
+            //update maxHeap        [maxHeap]  median  [minHeap]
             if (maxHeap.size() > minHeap.size()){
                 minHeap.offer(median);
                 median = maxHeap.poll();

@@ -14,7 +14,7 @@ We can start an opening bracket if we still have one (of n) left to place. And w
 
     public void backtrack(List<String> list, String str, int open, int close, int max){
         //exit
-        if(str.length() == max*2){
+        if(str.length() == max * 2){
             list.add(str);
             return;
         }

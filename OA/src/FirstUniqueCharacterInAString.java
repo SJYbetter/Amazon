@@ -16,6 +16,7 @@ public class{
         if (s == null || "".equals(s)) return 0;
 
         int[] charNum = int[26];
+
         for (char c : s.toCharArray()){
             charNum[c - 'a'] ++;
         }
@@ -27,13 +28,15 @@ public class{
     }
 
 
-    // return the char 
+    // return the char
     public char firstUniqChar(String str) {
         // Write your code here
 
         if (str == null || "".equals(str)) return (char) -1;
+
         char[] strArray = str.toCharArray();
         int[] times = new int[26];
+        
         for (char c : strArray){
           times[c - 'a'] ++;
         }

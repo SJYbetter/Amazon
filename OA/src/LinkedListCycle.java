@@ -7,6 +7,7 @@ public class Solution {
         Set<ListNode> set = new HashSet<>();
         ListNode temp = head;
         set.add(temp);
+        
         while (temp.next != null){
             if (set.contains(temp.next)) return true;
             temp = temp.next;

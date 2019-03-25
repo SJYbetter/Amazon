@@ -33,12 +33,15 @@ Given an array of meeting time intervals consisting of start and end times [[s1,
 class Solution {
     public int minMeetingRooms(Interval[] intervals) {
         if (intervals == null || intervals.length == 0) return 0;
+
+        //start time and end time array
         int[] s = new int[intervals.length];
         int[] e = new int[intervals.length];
         for (int i = 0; i < intervals.length; i++){
             s[i] = intervals[i].start;
             e[i] = intervals[i].end;
         }
+        
         Arrays.sort(s);
         Arrays.sort(e);
 

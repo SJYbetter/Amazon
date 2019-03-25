@@ -26,9 +26,9 @@ class Solution {
         for (ListNode l : lists){
             if (l != null) pq.offer(l);
         }
+
         while (!pq.isEmpty()){
             temp.next = pq.poll();
-            //move temp 
             temp = temp.next;
 
             if (temp.next != null){

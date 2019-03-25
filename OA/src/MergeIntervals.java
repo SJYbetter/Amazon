@@ -11,7 +11,7 @@ Example 2:
 
 */
 
-
+//Definition id Interval
 public class Interval{
     int start, end;
     public Interval(int s, int e){
@@ -32,6 +32,7 @@ public class Solution{
             //no overlap
             if (last == null || item.start > last.end){
                 ans.add(item);
+                //update the last 
                 last = item;
             }else{
                 //update the last.end

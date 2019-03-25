@@ -12,6 +12,7 @@ public class MaxStack{
     }
 
     private void pushHelper(int x){
+        //compare x and current max number in maxstack
         int tempMax = maxstack.isEmpty() ? Integer.MIN_VALUE : maxstack.peek();
         if (x > tempMax){
             tempMax = x;
@@ -29,6 +30,8 @@ public class MaxStack{
         return stack.peek();
     }
 
+
+
     public int popMax(){
         int max = maxstack.peek();
         Stack<Integer> temp = new Stack<>();
@@ -39,12 +42,16 @@ public class MaxStack{
         //find the max in Stack
         stack.pop();
         maxstack.pop();
+        //push all number in temp back to stack and update the maxHeap
         while (!temp.isEmpty()){
             int x = temp.pop();
             pushHelper(x);
         }
         return max;
     }
+
+
+
     public int peekMax(){
         return maxstack.peek();
     }

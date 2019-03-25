@@ -16,12 +16,13 @@ public class solution{
                         //update the lastNode
                         lastNode = lastNode.next;
                 }
-
+                //l1 remaining
                 if (l1 != null){
                         lastNode.next = l1;
                 }else{
                         lastNode.next = l2;
                 }
+                
                 return ans.next;
         }
 }

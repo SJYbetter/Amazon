@@ -4,11 +4,11 @@ public class FirstUniqueCharacter{
       if (s == null || "".equals(s)) return -1;
 
       int[] check = new int[26];
-
+      //calculate the frequency
       for (int i = 0; i < s.length(); i++){
         check[s.charAt(i) - 'a'] ++;
       }
-
+      //go through the array to check which position the frequency is first appear 1
       for (int i = 0; i < s.length(); i++){
         if (check[s.charAt(i) - 'a'] == 1) return i;
       }
@@ -25,9 +25,11 @@ public class FirstUniqueCharacter{
     if (str == null || "".equals(str)) return (char) -1;
 
     char[] check = new char[26];
+
     for (int i = 0; i < str.length(); i++){
         check[str.charAt(i) - 'a'] += 1;
     }
+
     for (int i = 0; i < str.length(); i++){
         if (check[str.charAt(i) - 'a'] == 1) return str.charAt(i);
     }

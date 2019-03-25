@@ -5,12 +5,13 @@ class Solution {
 
         boolean[] notPrime = new boolean[n];
         int count = 0;
+        //[2,3,4,5,6] => 2, count ++, remove 4,6 因为是2的倍数
 
         for (int i=2; i<n; i++){
             if (notPrime[i] == false){
                 count ++;
-                for (int j=2; j*i<n; j++){
-                    notPrime[j*i] = true;
+                for (int j = 2; j * i < n; j++){
+                    notPrime[j * i] = true;
                 }
             }
         }

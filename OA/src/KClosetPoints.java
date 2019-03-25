@@ -98,7 +98,9 @@ public class KClosetPoints1{
 //以matrix的形式给出，new一个新的comparator就好了
 public class KClosetPoints2{
 	public int[][] kCloset(int[][] points, int k){
-		PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> (p2[0]*p2[0] + p2[1]*p2[1] - p1[0]*p1[0] - p1[1]*p1[1]));
+		//maxHeap Aaccording to its
+		PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> (p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] - p1[1] * p1[1]));
+
 		for (int i = 0; i < points.length; i++){
 			pq.offer(points[i]);
 			if (pq.size() > k){
@@ -107,6 +109,7 @@ public class KClosetPoints2{
 		}
 
 		int[][] ans = new int[k][2];
+		
 		for (int i = k-1; i >= 0; i--){
 			ans[i] = pq.peek();
 			pq.poll();

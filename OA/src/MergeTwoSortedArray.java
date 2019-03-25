@@ -8,7 +8,7 @@ Output: [1,2,2,3,5,6]
 
 
 class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    public void mergeSort(int[] nums1, int m, int[] nums2, int n) {
         if (m == 0 && n == 0) return;
 
         int i = m-1, j = n-1, idx = m+n-1;
