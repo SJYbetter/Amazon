@@ -14,8 +14,8 @@ Not 7-1 = 6, as selling price needs to be larger than buying price.
         for(int i = 1; i < prices.length; i++){
             //update the curMin from the frist day to ith day
             if (prices[i] < curMin){
-                cur = prices[i];
-                //ans[1] 
+                curMin = prices[i];
+                //ans[1]
             }
             //update the profit
             profit = Math.max(prices[i] - curMin, profit);

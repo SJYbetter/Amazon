@@ -1,5 +1,8 @@
 class Solution {
-    //1. remove all front white space  2. decide positive or negative  3. start with number rather than number 4. >than 2^32-1 overflow
+    //1. remove all front white space
+    //2. decide positive or negative
+    //3. start with number rather than number
+    //4. >than 2^32-1 overflow
 
     public int myAtoi(String str) {
 
@@ -20,7 +23,7 @@ class Solution {
             }else if( c == ' ' && count == 1){
                 count --;
             }else{
-                //start with not number
+                //start with not number, not sign
                 break;
             }
 
@@ -31,8 +34,9 @@ class Solution {
                 return Integer.MAX_VALUE;
             else
                 return Integer.MIN_VALUE;
-        }else{
-            return (int)(result * flag);
         }
+
+        return (int) (result * flag);
+
     }
 }

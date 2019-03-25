@@ -9,10 +9,11 @@ class Solution {
 
         while (!q.isEmpty()){
             int size = q.size();
-            List<Integer> level = new LinkedList<>();
-            //one level 
+            List<Integer> level = new ArrayList<>();
+            //each level extension
             for (int i = 0; i < size; i++){
                 TreeNode cur = q.poll();
+
                 if (height % 2 == 1) level.add(0, cur.val);
                 else level.add(cur.val);
                 //add left child
@@ -23,7 +24,7 @@ class Solution {
                 if (cur.right != null){
                     q.offer(cur.right);
                 }
-            }
+            }//end for loop, finish one level extension
             ans.add(level);
             height ++;
     }
