@@ -43,7 +43,7 @@ public class Solution{
 
         for (int i=0; i<s.length(); i++){
             for (char c = 'a'; c <= 'z'; c++){
-                if (s.charAt[i] == 'c') continue;
+                if (s.charAt[i] == c) continue;
                 String word = replace(s, i, c);
                 if (dict.contains(word)){
                     getWords.add(word);

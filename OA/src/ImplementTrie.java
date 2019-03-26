@@ -1,3 +1,5 @@
+
+//new a class
 class TrieNode{
     public TrieNode[] children = new TrieNode[26];
     public boolean hasWord = false;
@@ -6,27 +8,27 @@ class TrieNode{
 
 class Trie {
 
-    //public TrieNode[] children = new TrieNode[26];
-    //public boolean hasWord = false;
     private TrieNode root;
 
     /** Initialize your data structure here. */
     public Trie() {
         root = new TrieNode();
-
     }
 
     /** Inserts a word into the trie. */
     public void insert(String word) {
         TrieNode cur = root;
         for (int i = 0; i < word.length(); i++){
+            //find position
             int pos = word.charAt(i) - 'a';
+            //cannot find it
             if (cur.children[pos] == null){
                 cur.children[pos] = new TrieNode();
             }
             //move to next char
             cur = cur.children[pos];
         }
+        //finish the insert
         cur.hasWord = true;
     }
 

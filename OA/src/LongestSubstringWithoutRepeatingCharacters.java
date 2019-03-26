@@ -27,6 +27,8 @@ class Solution{
          return ans;
     }
 
+
+
     public int longestSubstring1(String s){
         if (s == null || "".equals(s)) return 0;
 

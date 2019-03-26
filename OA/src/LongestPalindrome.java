@@ -27,8 +27,8 @@ public class LongestPalindrome {
 		int L = l;
 		int R = r;
 		while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
-			L--;
-			R++;
+			L --;
+			R ++;
 		}
 		return R - L - 1;
 	}

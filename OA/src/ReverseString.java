@@ -16,7 +16,19 @@ class Solution {
             start ++;
             end --;
         }
-
         return;
     }
+
+//input 是一个string 而且有空格
+public String reverseString(String s) {
+    // write your code here
+    if (s == null || "".equals(s)) return "";
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = s.length()-1; i >= 0; i --){
+        sb.append(s.charAt(i));
+    }
+    return sb.toString();
+   }
 }

@@ -14,6 +14,7 @@ Output: 3
 
 
 class Solution {
+    //iteration method
     public int kthSmallest(TreeNode root, int k) {
      Stack<TreeNode> stack = new Stack<>();
      while(root != null || !stack.isEmpty()) {
@@ -27,6 +28,9 @@ class Solution {
      }
      return root.val;
     }
+
+
+
 
     //using inorder traverse 
     public int kthSmallest(TreeNode root, int k) {

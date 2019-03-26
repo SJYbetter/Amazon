@@ -1,5 +1,6 @@
 class Solution {
-    static boolean[][] visited;
+
+    private boolean[][] visited;
     public boolean exist(char[][] board, String word) {
         if (word == null || "".equals(word)) return true;
 
@@ -23,7 +24,7 @@ class Solution {
         if (i >= board.length || i < 0 || j >= board[0].length || j < 0 || board[i][j] != word.charAt(index) || visited[i][j]){
             return false;
         }
-        //set true;
+        //visited
         visited[i][j] = true;
 
         if(search(board, word, i-1, j, index+1) ||
