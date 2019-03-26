@@ -12,14 +12,16 @@ class Solution {
                 product *= nums[i];
             }
         }
-
+        //case 1, more than two zeros
         if (zeroNum > 1) return new int[nums.length];
+        //case 2, no zeros
         if (zeroNum == 0){
             for (int i = 0; i < nums.length; i++){
                 nums[i] = product/nums[i];
             }
             return nums;
         }
+        //case 3, only one zero
         if (zeroNum == 1){
             int pro = 1;
             for (int i = 0; i < zeroIndex; i++){
@@ -36,4 +38,19 @@ class Solution {
         }
         return new int[0];
     }
+
+//dp solution
+public int[] productExceptSelf1(int[] nums) {
+
+    int[] result = new int[nums.length];
+    for (int i = 0, tmp = 1; i < nums.length; i++) {
+        result[i] = tmp;
+        tmp *= nums[i];
+    }
+    for (int i = nums.length - 1, tmp = 1; i >= 0; i--) {
+        result[i] *= tmp;
+        tmp *= nums[i];
+    }
+    return result;
+}
 }
