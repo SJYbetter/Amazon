@@ -8,10 +8,6 @@ public class MinStack {
         minstack = new Stack<>();
     }
 
-    /*
-     * @param number: An integer
-     * @return: nothing
-     */
     public void push(int number) {
         // write your code here
         helper(number);
@@ -27,21 +23,42 @@ public class MinStack {
     }
 
 
-    /*
-     * @return: An integer
-     */
     public int pop() {
         // write your code here
         minstack.pop();
         return stack.pop();
     }
 
-    /*
-     * @return: An integer
-     */
+
     public int min() {
         // write your code here
         return minstack.peek();
         //find mini
+    }
+}
+
+//利用一个ArrayList
+class MinStack {
+
+    private List<Integer> array;
+    /** initialize your data structure here. */
+    public MinStack() {
+        array = new ArrayList<>();
+    }
+
+    public void push(int x) {
+        array.add(x);
+    }
+
+    public void pop() {
+        array.remove(array.size()-1);
+    }
+
+    public int top() {
+        return array.get(array.size()-1);
+    }
+
+    public int getMin() {
+        return Collections.min(array);
     }
 }
