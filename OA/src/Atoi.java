@@ -10,6 +10,7 @@ class Solution {
         int flag = 1;
         int count = 0;
         char[] charArr = str.toCharArray();
+        
         for(char c : charArr){
             count ++;
             //if c is numeric

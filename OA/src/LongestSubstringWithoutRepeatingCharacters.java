@@ -41,6 +41,7 @@ class Solution{
                 j++;
                 max = Math.max(max, set.size());
             }else{
+                //contains which means we need remove from i poniters
                 set.remove(s.charAt(i));
                 i ++;
             }

@@ -14,14 +14,14 @@ public class TopKFrequencyWords {
         for (String w : words){
             dict.put(w, dict.getOrDefault(w, 0) + 1);
         }
-        // max heap 先比较frequency 如果一样的话，再比较首字母！！！！！
+        // min heap 先比较frequency 如果一样的话，再比较首字母！！！！！
         PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(
-            (a,b) -> a.getValue() == b.getValue() ? a.getKey().compareTo(b.getKey()) : b.getValue()-a.getValue());
+            (a,b) -> a.getValue() == b.getValue() ? b.getKey().compareTo(a.getKey()) : a.getValue() - b.getValue());
         //堆化处理 但是呢 n *log k
         for (Map.Entry<String, Integer> pair : dict.entrySet()){
             pq.offer(pair);
 			if (pq.size() > k){
-				pq.poll();
+				pq.poll();  
 			}
         }
 

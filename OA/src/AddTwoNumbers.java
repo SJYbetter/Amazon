@@ -7,6 +7,7 @@ class Solution {
         ListNode ans = new ListNode(0);
         ListNode d = ans;
         int sum = 0;
+
         while (c1 != null || c2 != null) {
             sum /= 10;
             //check c1 is null add to sum

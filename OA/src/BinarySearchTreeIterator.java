@@ -1,6 +1,6 @@
 public class BSTIterator {
     private Stack<TreeNode> stack = new Stack<>();
-    //public BSTIterator(){};
+
 
     public BSTIterator(TreeNode root) {
         while (root != null){
@@ -11,6 +11,7 @@ public class BSTIterator {
     }
 
     /** @return whether we have a next smallest number */
+    //just to check the stack is empty or not
     public boolean hasNext() {
         return !stack.isEmpty();
     }

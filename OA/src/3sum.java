@@ -12,13 +12,16 @@ class Solution {
             for (int i = 0; i < nums.length-2; i++){
                 //avoid the repeat number
                 if (i == 0 || i > 0 && nums[i-1] != nums[i]){
+
+                    int target = nums[i] * -1;
+
                     //two pointers
                     int start = i+1;
                     int end = nums.length-1;
-                    int target = nums[i] * -1;
+
 
                     while (start < end){
-                        //case 1
+                        //case 1, find the target
                         if (nums[start] + nums[end] == target){
                             ans.add(Arrays.asList(nums[i], nums[start], nums[end]));
                             //check repeat start pointers
@@ -29,6 +32,7 @@ class Solution {
                             while (start < end && nums[end] == nums[end-1]){
                                 end --;
                             }
+                            //update two pointers
                             start ++;
                             end --;
                         }
@@ -41,7 +45,6 @@ class Solution {
                         }
                     }
                 }
-
             }
             return ans;
         }

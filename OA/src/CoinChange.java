@@ -13,10 +13,27 @@ public class Solution {
         int min = Integer.MAX_VALUE;
         for(int coin : coins) {
             int res = helper(coins, rem-coin, count);
-            if(res>=0 && res < min)
+            if(res >= 0 && res < min)
                min = 1 + res;
         }
         count[rem-1] = (min==Integer.MAX_VALUE) ? -1 : min;
         return count[rem-1];
       }
+
+
+//  Bottom up helper O(S*n) O(S)
+public int coinChangeBU(int[] coins, int amount){
+    int max = amount + 1;
+    int[] dp = new int[max];
+    Arrays.fill(dp, max);
+    dp[0] = 0;
+    for (int i = 1; i <= amount; i++) {
+        for (int j = 0; j < coins.length; j++) {
+            if(coins[j] <= i){
+                dp[i] = Math.min(dp[i] , dp[i - coins[j]] + 1);
+            }
+        }
+    }
+    return dp[amount] > amount ? -1 : dp[amount];
+}
 }
