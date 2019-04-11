@@ -22,7 +22,7 @@ class Solution {
 
         ListNode ans = new ListNode(0);
         ListNode temp = ans;
-        //put all head into the heap, because all head is smallest number in its corresponding LinkedList
+        //put all head into the heap, because all heads are smallest number in its corresponding LinkedList
         for (ListNode l : lists){
             if (l != null) pq.offer(l);
         }

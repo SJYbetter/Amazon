@@ -8,10 +8,10 @@ public class Search{
             if (nums[mid] == target) return mid;
             if (nums[mid] < target) start = mid+1;
             else end = mid-1;
-
-            if (nums[start] == target) return start;
-            if (nums[end] == target) return end;
         }
+
+        if (nums[start] == target) return start;
+        if (nums[end] == target) return end;
 
         return -1;
     }

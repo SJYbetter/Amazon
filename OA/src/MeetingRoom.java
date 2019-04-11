@@ -41,12 +41,12 @@ class Solution {
             s[i] = intervals[i].start;
             e[i] = intervals[i].end;
         }
-        
+
         Arrays.sort(s);
         Arrays.sort(e);
 
         int endId = 0, roomNumber = 0;
-        for (int i = 0; i <intervals.length; i++){
+        for (int i = 0; i < intervals.length; i++){
             if (s[i] < e[endId]) roomNumber += 1;
             else endId ++;
         }
