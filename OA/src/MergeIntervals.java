@@ -60,6 +60,7 @@ public class Solution {
 
         Interval last = null, curt = null;
         int i = 0, j = 0;
+        
         while (i < list1.size() && j < list2.size()) {
             if (list1.get(i).start < list2.get(j).start) {
                 curt = list1.get(i);
