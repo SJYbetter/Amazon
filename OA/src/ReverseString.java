@@ -2,7 +2,7 @@
 //Output: ["o","l","l","e","h"]
 
 
-class Solution {
+class ReverseString {
     public void reverseString(char[] s) {
         // edge case
         if (s == null || s.length == 0) return;

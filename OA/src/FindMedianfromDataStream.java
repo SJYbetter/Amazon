@@ -56,7 +56,5 @@ class MedianFinder {
         if (size == 0) return 0;
         if (size % 2 != 0) return median;
         return (double) (median + maxHeap.peek())/2;
-
-
     }
 }

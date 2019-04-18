@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UniqueChar {
-	public String uniqueChar(String s) {
+	public static String uniqueChar(String s) {
 		if ("".equals(s) || s.length() == 0) return "";
 
 		Set<Character> set = new HashSet<>();

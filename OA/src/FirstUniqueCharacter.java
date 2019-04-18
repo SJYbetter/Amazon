@@ -1,6 +1,6 @@
 public class FirstUniqueCharacter{
     //返回index
-    public int firstUnique(Stirng s){
+    public static int firstUnique(Stirng s){
       if (s == null || "".equals(s)) return -1;
 
       int[] check = new int[26];

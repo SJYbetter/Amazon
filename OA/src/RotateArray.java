@@ -8,7 +8,7 @@ rotate 3 steps to the right: [5,6,7,1,2,3,4]
 
 */
 
-public class Solution {
+public class RotateArray {
     /**
      * @param nums: an array
      * @param k: an integer
