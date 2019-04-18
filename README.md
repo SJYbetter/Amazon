@@ -1,2 +1,4 @@
-# Amazon
-Amazon Interview Problem
+# Algorithm questions
+
+Practice makes perfect!
+
