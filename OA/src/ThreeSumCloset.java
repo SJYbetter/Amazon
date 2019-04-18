@@ -1,4 +1,6 @@
-class Solution {
+import java.util.Arrays;
+
+class ThreeSumCloset {
     public int threeSumClosest(int[] nums, int target) {
         if (nums == null || nums.length == 0) return 0;
         //int ans;

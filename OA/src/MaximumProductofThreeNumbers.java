@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*
 Given an integer array, find three numbers whose product is maximum and output the maximum product.
 
@@ -7,7 +9,7 @@ Output: 24
 */
 
 
-class Solution {
+class MaximumProductofThreeNumbers {
     public int maximumProduct(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
 

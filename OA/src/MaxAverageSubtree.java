@@ -1,5 +1,3 @@
-import javax.swing.tree.TreeNode;
-
 public class MaxAverageSubtree {
     private class treeFamily {
         int sum;
@@ -8,6 +6,16 @@ public class MaxAverageSubtree {
             this.sum = sum;
             this.count = count;
         }
+    }
+    
+    public class TreeNode{
+    	int val;
+    	TreeNode left;
+    	TreeNode right;
+    	
+    	public TreeNode(int x) {
+    		this.val = x;
+    	}
     }
 
     private TreeNode res = null;
@@ -34,7 +42,7 @@ public class MaxAverageSubtree {
 }
 
 // n-ary tree
-public class Solution{
+public class MaxAverageSubtree1{
     class TreeFamily {
         ComponentNode root;
         int sum;

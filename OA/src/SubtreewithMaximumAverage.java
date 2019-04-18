@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class MaxAverageSubtree {
+public class SubtreewithMaximumAverage {
 
     private class NodeSummary {
         int total;
@@ -49,7 +49,7 @@ public class MaxAverageSubtree {
     public static void main(String[] argv) {
         TreeNode root = new TreeNode();
 
-        new MaxAverageSubtree().find_max_average_subtree(root);
+        new SubtreewithMaximumAverage().find_max_average_subtree(root);
 
 
     }

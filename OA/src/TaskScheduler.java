@@ -1,4 +1,9 @@
-class Solution {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class TaskScheduler {
 /*
 Input: tasks = ["A","A","A","B","B","B"], n = 2
 Output: 8
@@ -6,8 +11,10 @@ Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
 
 */
     public int leastInterval(char[] tasks, int n) {
+    	//edge case
         if (tasks == null || tasks.length==0 ) return 0;
         int[] map = new int[26];
+        
         PriorityQueue<Integer> pq = new PriorityQueue(26, Collections.reverseOrder());
 
         for (char c: tasks)

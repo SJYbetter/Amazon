@@ -1,4 +1,4 @@
-class Solution {
+class Subtree {
     public boolean isSubtree(TreeNode s, TreeNode t) {
         if (s == null) return false;
         if (isSame(s,t)) return true ;

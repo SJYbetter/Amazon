@@ -14,7 +14,17 @@ Given binary tree [3,9,20,null,null,15,7],
 return its depth = 3
 
 */
+public class MaximumDepthofBinaryTree{
 
+public class TreeNode{
+	int val;
+	TreeNode left;
+	TreeNode right;
+	
+	public TreeNode(int x) {
+		this.val = x;
+	}
+}
 //using the divide and conquer
 public int maxDepth(TreeNode root){
     if (root == null) return 0;
@@ -35,6 +45,8 @@ public int maxDepth1(TreeNode root){
 private void traverse(TreeNode node, int curDepth){
     if (node == null) return;
     depth = Math.max(curDepth, depth);
-    traverse(node.left, curDepth+1);
-    traverse(node.right, curDepth+1);
+    traverse(node.left, curDepth + 1);
+    traverse(node.right, curDepth + 1);
+}
+
 }
