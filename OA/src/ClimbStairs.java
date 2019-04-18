@@ -1,4 +1,4 @@
-class Solution {
+class ClimbStairs {
     public int climbStairs(int n) {
         //edge case
         if (n == 1) return 1;

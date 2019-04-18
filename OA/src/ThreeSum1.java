@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Solution {
+class ThreeSum1 {
     //R.T O(N*N)
   
         public List<List<Integer>> threeSum(int[] nums) {
@@ -46,11 +46,11 @@ class Solution {
             }
             return ans;
         }
-    }
+    
 
 
 
-class Solution1 {
+
     public int threeSumClosest(int[] nums, int target) {
         if (nums == null || nums.length == 0) return 0;
         //int ans;

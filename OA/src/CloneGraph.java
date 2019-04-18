@@ -1,11 +1,20 @@
-//Definition for undirected graph.
-class UndirectedGraphNode {
-    int label;
-    List<UndirectedGraphNode> neighbors;
-    UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
-  };
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
-public class Solution {
+//Definition for undirected graph.
+
+
+public class CloneGraph {
+	
+	public class UndirectedGraphNode {
+	    int label;
+	    List<UndirectedGraphNode> neighbors;
+	    UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+	  };
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) return node;
         // use bfs algorithm to traverse the graph and get all nodes.
