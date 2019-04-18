@@ -1,4 +1,4 @@
-class Solution {
+class CountPrime {
     //output the number of prime smaller than N
     public int countPrimes(int n) {
         if (n <= 1) return 0;
@@ -19,7 +19,8 @@ class Solution {
     }
 
 
-    private boolean isPrime(int n){
+    @SuppressWarnings("unused")
+	private boolean isPrime(int n){
         if (n <= 1) return false;
         if (n == 2) return true;
         for (int i = 2; i <= (int) Math.sqrt(n); i++){

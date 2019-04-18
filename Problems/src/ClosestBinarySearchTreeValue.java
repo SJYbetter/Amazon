@@ -1,4 +1,4 @@
-class Solution {
+class CloneBinarySearchTreeValue {
 
     public int closestValue(TreeNode root, double target) {
         int closet = root.val;

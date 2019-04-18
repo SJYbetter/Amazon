@@ -2,20 +2,20 @@
 //Space complexity: O(n) - space for recursive function call stack
 
 
-class Solution {
+class FibonacciNumber {
     public int fib(int N) {
         if (N == 0) return 0;
         if (N == 1) return 1;
         return fib(N-1) + fib(N-2);
-
     }
-}
 
+
+    
 //Time complexity: O(n)
 //Space complexity: O(n)
-class Solution
-{
-    public int fib(int N)
+
+
+    public int fib1(int N)
     {
         if(N <= 1)
             return N;

@@ -1,3 +1,9 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /*
 Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
 Output:
@@ -12,7 +18,7 @@ Output:
 
 
 
-class Solution {
+class GroupAnagrames {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> list = new ArrayList<>();
         //edge case
@@ -26,6 +32,7 @@ class Solution {
             if(map.containsKey(key)){
                 map.get(key).add(s);
             }else {
+            	//deep copy
                 map.put(key, new ArrayList<String>(){{add(s);}});
             }
         }

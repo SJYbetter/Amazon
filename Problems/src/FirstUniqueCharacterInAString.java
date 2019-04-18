@@ -10,26 +10,27 @@ return 2.
 
 */
 
-public class{
+public class FirstUniqueCharacterInAString{
     // return index
     public int firstUniqChar(String s){
         if (s == null || "".equals(s)) return 0;
 
-        int[] charNum = int[26];
+        int[] charNum = new int[26];
 
         for (char c : s.toCharArray()){
             charNum[c - 'a'] ++;
         }
 
-        for (int i; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++){
             if (s.charAt(i) == 1) return i;
         }
+        
         return -1;
     }
 
 
     // return the char
-    public char firstUniqChar(String str) {
+    public char firstUniqChar1(String str) {
         // Write your code here
 
         if (str == null || "".equals(str)) return (char) -1;

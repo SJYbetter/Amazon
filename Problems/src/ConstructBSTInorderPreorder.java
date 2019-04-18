@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -7,7 +11,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class ConstructBSTInorderPreorder {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
      // deal with edge case(s)
         if (preorder.length == 0 || inorder.length == 0) {

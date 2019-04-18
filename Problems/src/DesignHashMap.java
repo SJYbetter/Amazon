@@ -76,7 +76,12 @@ class MyHashMap1 {
         map[code] = value;
     }
 
-    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    private int hashCode(int key) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     public int get(int key) {
         int code = hashCode(key);
         return map[code];

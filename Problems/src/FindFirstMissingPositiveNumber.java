@@ -2,7 +2,7 @@
 //
 
 
-public class Solution {
+public class FindFirstMissingPositiveNumber {
     public int firstMissingPositive(int[] A) {
         int i = 0;
         while(i < A.length){
