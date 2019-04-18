@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class ListNode {
     int key, val;
     ListNode next;
@@ -27,7 +29,7 @@ class MyHashMap {
             else {
                 prev.next.val = value;
             }
-
+       }
         public int get(int key) {
             int i = hashFunction(key);
             if (nodes[i] == null) return -1;
@@ -60,10 +62,10 @@ class MyHashMap {
 
 
 //using an array to design
-class MyHashMap {
+class MyHashMap1 {
     private int [] map;
     /** Initialize your data structure here. */
-    public MyHashMap() {
+    public MyHashMap1() {
         map = new int[1000001];
         Arrays.fill(map,-1);
     }

@@ -1,4 +1,4 @@
-class Solution {
+class Atoi {
     //1. remove all front white space
     //2. decide positive or negative
     //3. start with number rather than number

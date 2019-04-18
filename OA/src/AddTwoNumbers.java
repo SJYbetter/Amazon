@@ -1,4 +1,13 @@
-class Solution {
+class AddTwoNumbers {
+	//definition of ListNode
+	public class ListNode{
+		int val;
+		ListNode next;
+		ListNode(int val){
+			this.val = val;
+		}
+		
+	}
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         //edge case
         if (l1 == null || l2 == null) return l1 == null ? l2 : l1;

@@ -1,8 +1,19 @@
-public class BSTIterator {
+import java.util.Stack;
+
+public class BinarySearchTreeIterator {
+	
+	public class TreeNode{
+		int val;
+		TreeNode left;
+		TreeNode right;
+		public TreeNode(int x) {
+			this.val = x;
+		}
+	}
     private Stack<TreeNode> stack = new Stack<>();
 
 
-    public BSTIterator(TreeNode root) {
+    public BinarySearchTreeIterator(TreeNode root) {
         while (root != null){
             stack.push(root);
             root = root.left;

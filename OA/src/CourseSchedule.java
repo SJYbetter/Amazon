@@ -1,3 +1,11 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class CourseSchedule{
+	
+
+
+
 public boolean canFinish(int numCourses, int[][] prerequisites) {
     if(numCourses == 0) return true;
     if(prerequisites == null || prerequisites.length == 0) return true;
@@ -34,4 +42,5 @@ public boolean canFinish(int numCourses, int[][] prerequisites) {
     }
 
     return count == numCourses;
+}
 }

@@ -1,4 +1,4 @@
-public class Search{
+public class Algorithm{
     public int binarySearch(int[] nums, int target){
         //edge case
         if (nums == null || nums.length == 0) return -1;
