@@ -1,4 +1,4 @@
-public class Solution{
+public class Solution {
     /*
     At each i, we keep "promising" elements, which are potentially max number in window [i-(k-1),i] or any subsequent window. This means
 
@@ -9,46 +9,46 @@ public class Solution{
     As a result elements in the deque are ordered in both sequence in array and their value. At each step the head of the deque is the max element in [i-(k-1),i]
 
     */
-    public int[] slidingWindowMaximum(int[] nums, int k){
+    public int[] slidingWindowMaximum(int[] nums, int k) {
         if (a == null || k <= 0) {
-			return new int[0];
-		}
-		int n = a.length;
-		int[] r = new int[n-k+1];
-		int ri = 0;
-		// store index
-		Deque<Integer> q = new ArrayDeque<>();
-		for (int i = 0; i < a.length; i++) {
-			// remove numbers out of range k
-			while (!q.isEmpty() && q.peek() < i - k + 1) {
-				q.poll();
-			}
-			// remove smaller numbers in k range as they are useless
-			while (!q.isEmpty() && a[q.peekLast()] < a[i]) {
-				q.pollLast();
-			}
-			// q contains index... r contains content
-			q.offer(i);
-			if (i >= k - 1) {
-				r[ri++] = a[q.peek()];
-			}
-		}
-		return r;
+            return new int[0];
+        }
+        int n = a.length;
+        int[] r = new int[n - k + 1];
+        int ri = 0;
+        // store index
+        Deque<Integer> q = new ArrayDeque<>();
+        for (int i = 0; i < a.length; i++) {
+            // remove numbers out of range k
+            while (!q.isEmpty() && q.peek() < i - k + 1) {
+                q.poll();
+            }
+            // remove smaller numbers in k range as they are useless
+            while (!q.isEmpty() && a[q.peekLast()] < a[i]) {
+                q.pollLast();
+            }
+            // q contains index... r contains content
+            q.offer(i);
+            if (i >= k - 1) {
+                r[ri++] = a[q.peek()];
+            }
+        }
+        return r;
     }
 }
 
 //wrong time solution
-if (nums == null || k < 0) return new int[]{};
-int[] ans = new int[nums.length-k+1];
-int max, j;
-for (int i = 0; i <= nums.length-k; i++){
-    max = nums[i];
-    for (j = 1; j < k; j++){
-        if (nums[i+j] > max){
-            max = nums[i+j];
+if(nums==null||k< 0)return new int[]{};
+        int[]ans=new int[nums.length-k+1];
+        int max,j;
+        for(int i=0;i<=nums.length-k;i++){
+        max=nums[i];
+        for(j=1;j<k; j++){
+        if(nums[i+j]>max){
+        max=nums[i+j];
         }
-    }
-    ans[i] = max;
-}
-return ans;
-}
+        }
+        ans[i]=max;
+        }
+        return ans;
+        }
