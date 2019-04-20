@@ -125,6 +125,8 @@ public class sliding_window_maximum {
             } else if (start > 0 && avg2 * allowedIncrease < avg2) {
                 dump(inputs, start, i, max, avg1, avg2);
                 // return true;
+            }else{
+                dump(inputs, start, i, max, avg1, avg2);
             }
             avg2 = avg1;
         }
