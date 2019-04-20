@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class sliding_window_maximum {
@@ -12,7 +9,31 @@ public class sliding_window_maximum {
         System.out.println(String.format("%s, max: %d, avg1: %.6f, avg2: %.6f", aa, max, avg, avg2));
     }
 
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public int[] maxSlidingWindow_v2(int[] nums, int k) {
+        int[] result = new int[nums.length == 0 ? 0 : nums.length - k + 1];
+
+        LinkedList<Integer> all_max_then_node_i = new LinkedList<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!all_max_then_node_i.isEmpty() && i - k == all_max_then_node_i.getFirst())
+                all_max_then_node_i.removeFirst();
+
+            while (!all_max_then_node_i.isEmpty() && nums[all_max_then_node_i.getLast()] < nums[i]) {
+                all_max_then_node_i.removeLast();
+            }
+
+            all_max_then_node_i.addLast(i);
+
+            int start = i - k + 1;
+            if (start < 0) {
+                continue;
+            }
+
+            result[start] = nums[all_max_then_node_i.getFirst()];
+        }
+        return result;
+    }
+
+    public int[] maxSlidingWindow_v1(int[] nums, int k) {
         int size = nums.length;
         int[] result = new int[size - k + 1];
 
@@ -70,7 +91,47 @@ public class sliding_window_maximum {
         return result.stream().mapToInt(x -> (int) x).toArray();
     }
 
-    private static boolean alerter(List<Integer> inputs, int windowSize, float allowedIncrease) {
+    public static boolean alerter_v2(List<Integer> inputs, int windowSize, float allowedIncrease) {
+
+        long total = 0;
+        float avg1 = 0, avg2 = 0;
+
+        LinkedList<Integer> all_gte_i = new LinkedList<Integer>(); // great then node i
+        for (int i = 0; i < inputs.size(); i++) {
+            int start = i - windowSize + 1;
+
+            if (!all_gte_i.isEmpty() && all_gte_i.getFirst() == start -1 )
+                all_gte_i.removeFirst();
+
+            while (!all_gte_i.isEmpty() && inputs.get(all_gte_i.getLast()) < inputs.get(i))
+                all_gte_i.removeLast();
+
+            all_gte_i.addLast(i);
+
+            total = total + inputs.get(i) ;
+
+            if (start < 0 )
+                continue;
+            else if (start > 0)
+                total = total - inputs.get(start -1);
+
+            int max = inputs.get(all_gte_i.getFirst());
+
+            avg1 = total * 1.0f / windowSize;
+
+            if (avg1 * allowedIncrease < max) {
+                dump(inputs, start, i, max, avg1, avg2);
+                // return true;
+            } else if (start > 0 && avg2 * allowedIncrease < avg2) {
+                dump(inputs, start, i, max, avg1, avg2);
+                // return true;
+            }
+            avg2 = avg1;
+        }
+        return false;
+    }
+
+    public static boolean alerter_v1(List<Integer> inputs, int windowSize, float allowedIncrease) {
         java.util.TreeMap<Integer, Integer> sortmap = new java.util.TreeMap<Integer, Integer>();
 
         float avg1 = 0, avg2 = 0;
@@ -103,6 +164,8 @@ public class sliding_window_maximum {
                 dump(inputs, start, i, max, avg1, avg2);
                 // return true;
             }
+
+            avg2 = avg1;
         }
 
         return false;
@@ -164,15 +227,15 @@ public class sliding_window_maximum {
 
     public static void main(String[] argv) {
         Integer[] input = new Integer[]{1, 2, 100, 2, 2, 50, 20};
-        alerter(Arrays.asList(input), 3, 1.5f);
+        alerter_v1(Arrays.asList(input), 3, 1.5f);
 
         System.out.println("ssssssssss");
 
         input = new Integer[]{1, 2, 4, 2, 2};
-        alerter(Arrays.asList(input), 3, 2f);
+        alerter_v1(Arrays.asList(input), 3, 2f);
 
         System.out.println("ssssssssss");
         input = new Integer[]{1, 2, 100, 2, 2};
-        alerter(Arrays.asList(input), 2, 2.5f);
+        alerter_v1(Arrays.asList(input), 2, 2.5f);
     }
 }
