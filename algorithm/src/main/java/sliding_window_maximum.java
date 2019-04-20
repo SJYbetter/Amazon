@@ -94,15 +94,19 @@ public class sliding_window_maximum {
     public static boolean alerter_v2(List<Integer> inputs, int windowSize, float allowedIncrease) {
 
         long total = 0;
+        //avg1 store the curcent window size average
+        //avg2 store the last window size average
         float avg1 = 0, avg2 = 0;
 
-        LinkedList<Integer> all_gte_i = new LinkedList<Integer>(); // great then node i
+        // store the index of number that value is great then node i
+        LinkedList<Integer> all_gte_i = new LinkedList<Integer>();
+
         for (int i = 0; i < inputs.size(); i++) {
             int start = i - windowSize + 1;
 
             if (!all_gte_i.isEmpty() && all_gte_i.getFirst() == start -1 )
                 all_gte_i.removeFirst();
-
+            //find greater number
             while (!all_gte_i.isEmpty() && inputs.get(all_gte_i.getLast()) < inputs.get(i))
                 all_gte_i.removeLast();
 
@@ -120,13 +124,13 @@ public class sliding_window_maximum {
             avg1 = total * 1.0f / windowSize;
 
             if (avg1 * allowedIncrease < max) {
-                dump(inputs, start, i, max, avg1, avg2);
-                // return true;
-            } else if (start > 0 && avg2 * allowedIncrease < avg2) {
-                dump(inputs, start, i, max, avg1, avg2);
-                // return true;
-            }else{
-                dump(inputs, start, i, max, avg1, avg2);
+                //dump(inputs, start, i, max, avg1, avg2);
+                 return true;
+
+
+            } else if (start > 0 && avg2 * allowedIncrease < avg1) {
+                //dump(inputs, start, i, max, avg1, avg2);
+                 return true;
             }
             avg2 = avg1;
         }
@@ -134,6 +138,7 @@ public class sliding_window_maximum {
     }
 
     public static boolean alerter_v1(List<Integer> inputs, int windowSize, float allowedIncrease) {
+
         java.util.TreeMap<Integer, Integer> sortmap = new java.util.TreeMap<Integer, Integer>();
 
         float avg1 = 0, avg2 = 0;
