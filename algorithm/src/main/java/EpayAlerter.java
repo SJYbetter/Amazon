@@ -12,12 +12,13 @@ public class EpayAlerter {
 
     public static boolean alerter_v1(List<Integer> inputs, int windowSize, float allowedIncrease) {
         int length = inputs.size();
-        if (length == 0) return false;
+        if (length * windowSize == 0) return false;
 
-        // find max value in per slide windows
+        // find max value in every slide window
         int[] maxSlidingWindow = new int[length - windowSize + 1];
 
         LinkedList<Integer> all_gte_i = new LinkedList<>();
+
         for (int i = 0; i < length; i++) {
             int start = i - windowSize + 1;
 
@@ -62,7 +63,8 @@ public class EpayAlerter {
         }
 
 
-        // Create a hashmap, for each individual maximum inputsIndex, map it to the average in all windows it appears
+        // Create a hashmap, for each individual maximum inputsIndex,
+        // map it to the average in all windows it appears
         HashMap<Integer, List<Float>> map = new HashMap<>();
         for (int i = 0; i < maxSlidingWindow.length; i++) {
             int maxInputsIndex = maxSlidingWindow[i];
