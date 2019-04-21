@@ -3,6 +3,12 @@ import java.util.*;
 
 public class EpayAlerter {
 
+    public  static int secondOctoberTuesday(int year) {
+        GregorianCalendar cal = new GregorianCalendar(year, Calendar.OCTOBER, 1);
+        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        // 1 Oct + First Tuesday offset  + next week
+        return 1 + (10 - dayOfWeek) % 7 + 7;
+    }
 
     public static boolean alerter_v1(List<Integer> inputs, int windowSize, float allowedIncrease) {
         int length = inputs.size();
