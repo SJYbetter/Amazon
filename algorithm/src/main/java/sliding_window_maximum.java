@@ -4,9 +4,12 @@ import java.util.stream.Collectors;
 public class sliding_window_maximum {
 
     public static void dump(List<Integer> inputs, int start, int end, int max, double avg, double avg2) {
+        dump(inputs, start, end, max, avg, avg2, false);
+    }
+    public static void dump(List<Integer> inputs, int start, int end, int max, double avg, double avg2,boolean alert) {
         String aa = inputs.subList(start, end + 1).stream().map((x) -> Integer.toString(x)).collect(Collectors.joining(","));
 
-        System.out.println(String.format("%s, max: %d, avg1: %.6f, avg2: %.6f", aa, max, avg, avg2));
+        System.out.println(String.format("%s, max: %d, avg1: %.6f, avg2: %.6f, alert: %s", aa, max, avg, avg2, alert));
     }
 
     public int[] maxSlidingWindow_v2(int[] nums, int k) {
@@ -120,13 +123,13 @@ public class sliding_window_maximum {
             avg1 = total * 1.0f / windowSize;
 
             if (avg1 * allowedIncrease < max) {
-                dump(inputs, start, i, max, avg1, avg2);
+                dump(inputs, start, i, max, avg1, avg2, true);
                 // return true;
-            } else if (start > 0 && avg2 * allowedIncrease < avg2) {
-                dump(inputs, start, i, max, avg1, avg2);
+            } else if (start > 0 && avg2 * allowedIncrease < avg1) {
+                dump(inputs, start, i, max, avg1, avg2, true);
                 // return true;
             }else{
-                dump(inputs, start, i, max, avg1, avg2);
+                dump(inputs, start, i, max, avg1, avg2, false);
             }
             avg2 = avg1;
         }
