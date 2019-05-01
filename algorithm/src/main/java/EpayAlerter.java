@@ -10,13 +10,59 @@ public class EpayAlerter {
         return 1 + (10 - dayOfWeek) % 7 + 7;
     }
 
+    public static boolean alerter_v2(List<Integer> inputs, int windowSize, float allowedIncrease) {
+        int length = inputs.size();
+        if (length == 0) return false;
+
+        long total = 0;
+        float minAverage = 0.0f;  // for condition two
+        float[] avgSlidingWindow = new float[length - windowSize + 1];
+        for (int i = 0; i < length; i++) {
+            int start = i - windowSize + 1;
+            total = total + inputs.get(i);
+            if (start < 0) {
+                continue;
+            } else if (start == 0) {  // first sliding window average
+                minAverage = total * 1.0f / windowSize;
+                avgSlidingWindow[start] = minAverage;
+                continue;
+            }
+            // reducing node before current window
+            total = total - inputs.get(start - 1);
+            float average = total * 1.0f / windowSize;
+            if (average > minAverage * allowedIncrease)  // start >= 1, condition two
+                return true;
+            if (average < minAverage)
+                minAverage = average;
+            avgSlidingWindow[start] = average;
+        }
+
+        for (int i = 0; i < length; i++) {
+            int start = i < windowSize ? 0 : i - windowSize + 1;
+            boolean all_great = true;
+            for (; start <= i && start < avgSlidingWindow.length; start++) {
+                if (avgSlidingWindow[start] * allowedIncrease > inputs.get(i)) {
+                    all_great = false;
+                    break;
+                }
+            }
+            if (all_great)
+                return true;
+        }
+
+        return false;
+    }
+
     public static boolean alerter_v1(List<Integer> inputs, int windowSize, float allowedIncrease) {
         int length = inputs.size();
         if (length == 0) return false;
 
-        // find max value in per slide windows
-        int[] maxSlidingWindow = new int[length - windowSize + 1];
 
+        int[] maxSlidingWindow = new int[length - windowSize + 1];
+        // calc all average value pre sliding window
+        long total = 0;
+        float[] avgSlidingWindow = new float[length - windowSize + 1];
+        // find max value in per slide windows
         LinkedList<Integer> all_gte_i = new LinkedList<>();
         for (int i = 0; i < length; i++) {
             int start = i - windowSize + 1;
@@ -31,16 +77,6 @@ public class EpayAlerter {
 
             all_gte_i.addLast(i);
 
-            if (start >= 0)
-                maxSlidingWindow[start] = all_gte_i.getFirst();
-        }
-
-
-        // calc all average value pre sliding window
-        long total = 0;
-        float[] aveSlidingWindow = new float[length - windowSize + 1];
-        for (int i = 0; i < length; i++) {
-            int start = i - windowSize + 1;
             total = total + inputs.get(i);
             if (start < 0)
                 continue;
@@ -48,17 +84,18 @@ public class EpayAlerter {
                 // reducing node before current window
                 total = total - inputs.get(start - 1);
             }
-            aveSlidingWindow[start] = total * 1.0f / windowSize;
+            maxSlidingWindow[start] = all_gte_i.getFirst();
+            avgSlidingWindow[start] = total * 1.0f / windowSize;
         }
 
         // check the second condition
-        float min_avg = aveSlidingWindow[0];
-        for (int i = 1; i < aveSlidingWindow.length; i++) {
+        float min_avg = avgSlidingWindow[0];
+        for (int i = 1; i < avgSlidingWindow.length; i++) {
             float limit = min_avg * allowedIncrease;
-            if (aveSlidingWindow[i] > limit)
+            if (avgSlidingWindow[i] > limit)
                 return true;
-            if (aveSlidingWindow[i] < min_avg)
-                min_avg = aveSlidingWindow[i];
+            if (avgSlidingWindow[i] < min_avg)
+                min_avg = avgSlidingWindow[i];
         }
 
 
@@ -66,7 +103,7 @@ public class EpayAlerter {
         HashMap<Integer, List<Float>> map = new HashMap<>();
         for (int i = 0; i < maxSlidingWindow.length; i++) {
             int maxInputsIndex = maxSlidingWindow[i];
-            float avg = aveSlidingWindow[i];
+            float avg = avgSlidingWindow[i];
 
             if (!map.containsKey(maxInputsIndex)) {
                 map.put(maxInputsIndex, new ArrayList<Float>());
