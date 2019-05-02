@@ -38,6 +38,7 @@ public class Solution{
 
         int[] prefix = new int[nums1.length+1];
         prefix[0] = 0;
+
         for (int i = 1; i <= nums1.length; i++){
             prefix[i] = prefix[i-1] + nums1[i-1];
         }
@@ -58,6 +59,11 @@ public class Solution{
             ans[i] = nums1[small++];
         }
         return ans;
+    }
+
+    //输出这个subarray的index
+    public int[] maxSubArray(int[] nums){
+
     }
 
 

@@ -22,22 +22,6 @@ public class EpayAlerterTest {
             System.out.println(String.format("%s %d %d", cal.getTime().toString() , cal.get(Calendar.DAY_OF_MONTH), dayOffset));
             assertEquals(Calendar.TUESDAY, cal.get(Calendar.DAY_OF_WEEK));
         }
-//
-//        int day_offset = 0;
-//        if (dayOfWeek > Calendar.TUESDAY){
-//            day_offset =  7 + Calendar.TUESDAY -  dayOfWeek ;
-//        }else{
-//            day_offset = Calendar.TUESDAY - dayOfWeek;
-//        }
-
-        // System.out.println( day_offset + 7);
-//        cal.set(Calendar.DAY_OF_WEEK, cal.get(Calendar.DAY_OF_WEEK) -1 + 3);
-//        System.out.println(cal.getTime().toString());
-//        //cal.set();
-        //cal.a
-
-//        int result = Holiday.date(2018);
-//        assertEquals(9, result);
     }
 
     @Test

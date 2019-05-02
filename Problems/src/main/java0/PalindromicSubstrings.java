@@ -26,7 +26,7 @@ public class Solution{
         return true;
     }
 
-//考虑如果substring(i,j)如果是回文串，那么str[i]和str[j]一定相同，并且一定满足以下两个条件之一 1.substring(i+1,j-1)也是回文串  2.j-i<=2，即substring(i,j)长度<=2   那么我们就只需要顺着这个思路dp就行了，复杂度O(n^2)
+//
     public int countSubstrings_dp(String s){
         int n = str.length();
         int ans = 0;

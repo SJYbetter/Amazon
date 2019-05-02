@@ -40,12 +40,11 @@ public class CoinChange {
         }
         return dp[amount] > amount ? -1 : dp[amount];
     }
-
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        int[] coins = new int[]{2, 5};
-        System.out.println(coinChange(coins, 10));
+        System.out.println(dayOfWeek(2019));
 
+    }
 
     }
 }
