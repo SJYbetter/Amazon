@@ -31,11 +31,20 @@ public class BinaryTreePathTest {
         BinaryTreePath.TreeNode n3_8 = n2_4.right = new BinaryTreePath.TreeNode(180);
 
 
-        BinaryTreePath.ListNode paths =  BinaryTreePath.findPath(root, n3_7);
+        BinaryTreePath.ListNode first =  BinaryTreePath.findPath(root, n3_7);
 
-        assertEquals(100, paths.val);
-        assertEquals(150, paths.next.val);
-        assertEquals(175, paths.next.next.val);
-        assertEquals(170, paths.next.next.next.val);
+        BinaryTreePath.ListNode p = first;
+        do{
+            System.out.println(p.val + " ->");
+        }while( (p=p.next) != first.prev);
+//
+//        for (BinaryTreePath.ListNode p = head; p!= head; p=p.next) {
+//            System.out.println(p.val + " ->");
+//        }
+
+        assertEquals(100, first.val);
+        assertEquals(150, first.next.val);
+        assertEquals(175, first.next.next.val);
+        assertEquals(170, first.next.next.next.val);
     }
 }
