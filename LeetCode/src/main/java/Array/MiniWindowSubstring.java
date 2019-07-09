@@ -3,7 +3,7 @@ package Array;
 import java.util.HashMap;
 import java.util.Map;
 
-public class miniWindowSubstring {
+public class MiniWindowSubstring {
     public static String minWindow(String s, String t) {   
         //egde case
         if(s == null || t == null || "".equals(s) || "".equals(t)) return "";        

@@ -1,45 +1,28 @@
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ValidAnagram {
-	public static boolean isValid1(String s, String t) {
-		if (s.length() != t.length()) return false;
-		char[] ss = s.toCharArray();
-		char[] tt = t.toCharArray();
-		
-		Arrays.sort(ss);
-		Arrays.sort(tt);
-		
-		for (int i = 0; i < ss.length; i++) {
-			if (ss[i] != tt[i]) return false;
-		}
-		return true;
-	}
-	
-	public static boolean isValid2(String s, String t) {
-		if (s.length() != t.length()) return false;
-		int[] check = new int[26];
-		
-		for (int i = 0; i < s.length(); i++) {
-			check[s.charAt(i) - 'a'] ++;
-		}
-		
-		for (int i = 0; i < t.length(); i++) {
-			check[t.charAt(i) - 'a'] --;
-		}
-		
-		for (int i : check) {
-			if (i != 0) {
-				return false;
-			}
-		}
-		
-		return true;
-	}
+public class ValidAnagram{
+    public boolean validAnagram(String s, String t){
+        //check length first
+        if (s.length() != t.length()) return false;
+        // key is char, value is frequency
+        Map<Character, Integer> map = new HashMap<>();
+        //go through the string s to update the frequency
+        for (int i = 0; i < s.length(); i++){
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0)+1);
+        }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.print(isValid1("aba", "baa"));
 
-	}
-
+        for (int j = 0; j < t.length(); j++){
+            if (!map.containsKey(t.charAt(j))) return false;
+            else{
+                map.put(t.charAt(j), map.get(t.charAt(j))-1);
+            }
+        }
+        //check each value is zero or not
+        for (Integer zero: map.values()){
+            if (zero != 0) return false;
+        }
+        return true;
+    }
 }

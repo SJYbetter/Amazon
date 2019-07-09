@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class validSudoku {
+public class ValidSudoku {
 	public static boolean isValid(String[][] board) {
 		//check row
 		for (int i = 0; i < 9; i++) {

@@ -1,5 +1,5 @@
 
-public class findMinimumInRotatedSortedArray {
+public class FindMinimumInRotatedSortedArray {
 	//binary search 
 	public static int findMin(int[] nums) {
 		if (nums == null || nums.length == 0) return -1;
