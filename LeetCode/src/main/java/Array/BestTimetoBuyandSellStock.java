@@ -1,3 +1,5 @@
+package Array;
+
 public class BestTimetoBuyandSellStock{
 /*
 Input: [7,1,5,3,6,4]

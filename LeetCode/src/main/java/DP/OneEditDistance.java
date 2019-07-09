@@ -1,4 +1,5 @@
-class Solution {
+package DP;
+class OneEditDistance {
     public boolean isOneEditDistance(String s, String t) {
         // corner case
         if(s == null && t == null) return false;

@@ -1,3 +1,4 @@
+package DP;
 class ClimbStairs {
     public int climbStairs(int n) {
         //edge case
