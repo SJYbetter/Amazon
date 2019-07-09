@@ -1,4 +1,6 @@
-class Solution {
+package String;
+
+class WordSearch {
 
     private boolean[][] visited;
     public boolean exist(char[][] board, String word) {

@@ -1,4 +1,8 @@
-class Solution {
+package String;
+import java.util.ArrayList;
+import java.util.List;
+
+public class WordSearchII {
     private boolean[][] visited;
     private int m;
     private int n;
@@ -19,10 +23,7 @@ class Solution {
                 }
             }
         }
-
         return ans;
-
-
     }
 
     private boolean search(char[][] board, String word, int i, int j, int index){

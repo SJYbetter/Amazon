@@ -1,3 +1,7 @@
+package Tree;
+
+import DS.TreeNode;
+
 /*Given a binary tree, find its maximum depth.
 The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 Note: A leaf is a node with no children.
@@ -16,15 +20,7 @@ return its depth = 3
 */
 public class MaximumDepthofBinaryTree{
 
-public class TreeNode{
-	int val;
-	TreeNode left;
-	TreeNode right;
-	
-	public TreeNode(int x) {
-		this.val = x;
-	}
-}
+
 //using the divide and conquer
 public int maxDepth(TreeNode root){
     if (root == null) return 0;

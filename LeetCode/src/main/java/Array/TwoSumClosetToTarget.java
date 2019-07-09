@@ -1,4 +1,8 @@
-public class TwoSumCloset{
+package Array;
+
+import java.util.Arrays;
+
+public class TwoSumClosetToTarget{
     //最接近的值是输出
     public int twoSumClosetTarget(int[] nums, int target){
         if (nums == null || nums.length == 0) return -1;
@@ -31,7 +35,7 @@ public class TwoSumCloset{
             for (int j = i+1; j < nums.length; j++){
                 if (nums[i] + nums[j] > target){
                     // if we could find one larger than the larget, then the next part is must larger than the target
-                    count += (len - j);
+                    count += (nums.length - j);
                     break;// end the second for loop
                 }
             }

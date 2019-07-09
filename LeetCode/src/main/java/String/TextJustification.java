@@ -1,3 +1,5 @@
+package String;
+
 import java.util.ArrayList;
 import java.util.List;
 //compute one line need how many words
@@ -72,9 +74,6 @@ public class TextJustification {
 		List<String> ans = fullJustify(ss, 25);
 		String s = "bbbbbbbaaaaaa";
 		String s1 = s.substring(0,8);
-		
-	
-
 	}
 
 }
