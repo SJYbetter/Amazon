@@ -1,11 +1,15 @@
+package Array;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*solution: [] -> [1] ->[1,2] -> [1,2,3]
                -> [2] ->[2,3]
                -> [3]
 
-
-
 */
-class Solution {
+class Subset {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         if (nums == null) return ans;
@@ -15,48 +19,48 @@ class Solution {
         return ans;
     }
 
-    private void dfs(int[] nums, int index, List<Integer> subset, List<List<Integer>> ans){
+    private void dfs(int[] nums, int index, List<Integer> subset, List<List<Integer>> ans) {
         // all nodes is the results
         // deep copy the results
         ans.add(new ArrayList<>(subset));
 
-        for (int i = index; i < nums.length; i++){
+        for (int i = index; i < nums.length; i++) {
             subset.add(nums[i]);
             //find start from index i+1 subset, like [1,2] -> [1,2,3]
-            dfs(nums, i+1, subset,ans);
+            dfs(nums, i + 1, subset, ans);
             //back tracking
-            subset.remove(subset.size()-1);
+            subset.remove(subset.size() - 1);
         }
         //return;
     }
+
+    //with duplicate subsets
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+
+        List<List<Integer>> results = new ArrayList<>();
+        if (nums == null) return results;
+        // if the length is 0
+        if (nums.length == 0) {
+            results.add(new ArrayList<>());
+            return results;
+        }
+        Arrays.sort(nums);
+
+        List<Integer> subset = new ArrayList<Integer>();
+        helper(nums, 0, subset, results);
+        return results;
+
+    }
+
+    private void helper(int[] nums, int startIndex, List<Integer> subset, List<List<Integer>> results) {
+        results.add(new ArrayList<>(subset));
+        for (int i = startIndex; i < nums.length; i++) {
+            if (i != startIndex && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            subset.add(nums[i]);
+            helper(nums, i + 1, subset, results);
+            subset.remove(subset.size() - 1);
+        }
+    }
 }
-//with duplicate
-public List<List<Integer>> subsetsWithDup(int[] nums) {
-      // write your code here
-      List<List<Integer>> results = new ArrayList<List<Integer>>();
-      if (nums == null) return results;
-
-      if (nums.length == 0) {
-          results.add(new ArrayList<Integer>());
-          return results;
-      }
-      Arrays.sort(nums);
-
-      List<Integer> subset = new ArrayList<Integer>();
-      helper(nums, 0, subset, results);
-
-      return results;
-
-
-  }
-  public void helper(int[] nums, int startIndex, List<Integer> subset, List<List<Integer>> results){
-      results.add(new ArrayList<Integer>(subset));
-      for(int i=startIndex; i<nums.length; i++){
-          if (i != startIndex && nums[i]==nums[i-1]) {
-              continue;
-          }
-          subset.add(nums[i]);
-          helper(nums, i+1, subset, results);
-          subset.remove(subset.size()-1);
-      }
-  }

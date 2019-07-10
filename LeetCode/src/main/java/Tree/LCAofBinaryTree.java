@@ -1,5 +1,9 @@
-public class LCA{
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q){
+package Tree;
+
+import DS.TreeNode;
+
+public class LCAofBinaryTree{
+    private TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q){
         if (root ==  null) return null;
         if (root == p || root == q) return root;
         TreeNode left = lowestCommonAncestor(root.left, p, q);

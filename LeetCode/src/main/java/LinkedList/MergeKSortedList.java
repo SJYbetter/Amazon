@@ -1,21 +1,21 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
+package LinkedList;
+
+import DS.ListNode;
+
+import java.util.PriorityQueue;
+
 
  // R.T O(N * log K)   space complexity: O(K)
 
  //solution: using a size ok K head put all heads into the heap, and get the top element, then put
-class Solution {
+class MergeKSortedList {
+
     public ListNode mergeKLists(ListNode[] lists) {
         return helper(lists);
     }
 
-    public ListNode helper(ListNode[] lists){
+    private ListNode helper(ListNode[] lists){
+
         if (lists == null || lists.length == 0) return null;
         //min heap size of K
         PriorityQueue<ListNode> pq = new PriorityQueue<>(lists.length , (l1, l2) -> l1.val - l2.val);

@@ -1,4 +1,4 @@
-/*Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+package String;/*Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
 
 Input: "abca"
 Output: True
@@ -6,7 +6,7 @@ Explanation: You could delete the character 'c'.
 
 */
 
-class Solution {
+class ValidPalindromeII {
     public boolean validPalindrome(String s) {
         if ( s == null || "".equals(s)) return false;
 

@@ -1,3 +1,5 @@
+package String;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -6,7 +8,7 @@ import java.util.Set;
 //and the absolute difference between i and j is at most k.
 
 
-class ContainDuplicateII {
+class ContainsDuplicateII {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         if (nums == null || nums.length == 0) return false;
 

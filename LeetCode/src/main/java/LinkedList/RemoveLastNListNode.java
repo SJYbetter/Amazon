@@ -1,3 +1,6 @@
+package LinkedList;
+import DS.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -6,7 +9,7 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-class Solution {
+class RemoveLastNListNode {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null) return null;
 

@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-
-
-
-
 public class ValidBST {
 
 //F1 : inorder traverse return a none descending list

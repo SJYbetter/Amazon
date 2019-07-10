@@ -1,3 +1,7 @@
+package Tree;
+
+import DS.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +35,4 @@ public class TraverseBinartTree{
         list.add(node.val);
         helper1(node.right, list);
     }
-
-
-
-
 }
