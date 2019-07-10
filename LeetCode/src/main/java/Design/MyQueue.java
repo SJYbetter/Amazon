@@ -1,7 +1,14 @@
+package Design;
+
+
 /*
 利用2个stack实现一个queue
 注意empty（）方法
 */
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 class MyQueue {
 
@@ -26,7 +33,7 @@ class MyQueue {
 
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        if (stack1.empty() == true){
+        if (stack1.empty()){
             this.moveTo();
         }
         return stack1.pop();
@@ -51,11 +58,11 @@ class MyQueue {
 
 
 //using an ArrayList to implement a queue
-public class MyQueue1{
+class MyQueue1{
     private int pointer;
     private List<Integer> list;
 
-    public MyQueue1{
+    public MyQueue1(){
         pointer = 0;
         list = new ArrayList();
     }
@@ -68,7 +75,8 @@ public class MyQueue1{
         list.remove(list.get(list.size()-1));
     }
 
-    public void top(){
+    public int  peek(){
+        return list.get(list.get(0));
 
     }
 }

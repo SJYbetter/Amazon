@@ -1,3 +1,4 @@
+package String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,13 +13,9 @@ Output:
   ["nat","tan"],
   ["bat"]
 ]
-
 */
 
-
-
-
-class GroupAnagrames {
+class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> list = new ArrayList<>();
         //edge case

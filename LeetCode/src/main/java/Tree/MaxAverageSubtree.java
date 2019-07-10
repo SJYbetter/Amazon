@@ -1,4 +1,11 @@
-public class MaxAverageSubtree {
+package Tree;
+
+import DS.ListNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class MaxAverageSubtree {
     private class treeFamily {
         int sum;
         int count;
@@ -42,7 +49,19 @@ public class MaxAverageSubtree {
 }
 
 // n-ary tree
-public class MaxAverageSubtree1{
+class ComponentNode {
+    ComponentNode root;
+    int val;
+    List<ComponentNode> componenets;
+
+    public ComponentNode(int value) {
+        root.componenets = new ArrayList<>();
+        root.val = value;
+    }
+}
+
+
+class MaxAverageSubtree1{
     class TreeFamily {
         ComponentNode root;
         int sum;

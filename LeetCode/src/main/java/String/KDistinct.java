@@ -1,7 +1,5 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+package String;
+import java.util.*;
 
 public class KDistinct {
     public static int countkDist(String str, int k){
@@ -54,7 +52,7 @@ public class KDistinct {
 
 
     //k长度 刚刚好k-1个不同的字符的子串  应该要去重复的
-	public List<String> subStringK1(String s, int k){
+	public static List<String> subStringK1(String s, int k){
 
 		if (s == null || "".equals(s) || k > 26) return new ArrayList<>();
 

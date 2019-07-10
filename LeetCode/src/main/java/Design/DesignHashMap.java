@@ -1,3 +1,5 @@
+package Design;
+
 import java.util.Arrays;
 
 class ListNode {
@@ -47,10 +49,10 @@ class MyHashMap {
         }
 
         private int hashFunction(int key) {
-            return Integer.hashCode(key) % nodes.length;
+           return Integer.hashCode(key) % nodes.length;
         }
 
-        ListNode find(ListNode bucket, int key) {
+        private ListNode find(ListNode bucket, int key) {
             ListNode node = bucket, prev = null;
             while (node != null && node.key != key) {
                 prev = node;
@@ -61,39 +63,5 @@ class MyHashMap {
 }
 
 
-//using an array to design
-class MyHashMap1 {
-    private int [] map;
-    /** Initialize your data structure here. */
-    public MyHashMap1() {
-        map = new int[1000001];
-        Arrays.fill(map,-1);
-    }
 
-    /** value will always be non-negative. */
-    public void put(int key, int value) {
-        int code = hashCode(key);
-        map[code] = value;
-    }
 
-    private int hashCode(int key) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
-    public int get(int key) {
-        int code = hashCode(key);
-        return map[code];
-    }
-
-    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
-    public void remove(int key) {
-        int code = hashCode(key);
-        map[code] = -1;
-    }
-
-    private int hashFunction(int key) {
-        return Integer.hashCode(key) % map.length;
-    }
-}

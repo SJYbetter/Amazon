@@ -1,32 +1,31 @@
+package LinkedList;
+
+import DS.ListNode;
+// 1 -> 2 -> 3 -> 4
+
 public class ReverseLinkedList{
     //iterative method
-    public ListNode reverseNode1(ListNode head){
-        return helper(head);
-    }
+    public ListNode reverseNode(ListNode head) {
 
-    private ListNode helper(ListNode node){
-        if (node == null) return null;
+        if (head == null) return null;
         ListNode prev = null;
-        ListNode cur = node;
-        while (cur != null){
-            ListNode temp = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = temp;
+        while (head != null){
+            //in order to update the head
+            ListNode temp = head.next;
+            head.next = prev;
+            prev = head;
+            head = temp;
         }
         return prev;
     }
-
-
-    //recursion method
-    public ListNode reverseNode2(ListNode head){
-        
-    }
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+

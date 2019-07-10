@@ -1,3 +1,5 @@
+package Design;
+
 /**
  * Definition for ListNode
  * public class ListNode {
@@ -24,7 +26,7 @@ public class ReHashing {
 
         for (int i = 0; i < size; i++){
             while (hashTable[i] != null){
-                //if you directly calculate -4 % 3 you will get -1.
+                //if you directly calculate -4 % 3 you will get -1. but we use positive number
                 //You can use function: a % b = (a % b + b) % b to make it is a non negative integer.
                 int newIndex = (hashTable[i].val % newSize + newSize) % newSize;
                 if (ans[newIndex] == null){
