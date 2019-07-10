@@ -1,5 +1,8 @@
 package Tree;
-
+import DS.TreeNode;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 /*
 Input: root = [5,3,6,2,4,null,null,1], k = 3
        5
@@ -10,15 +13,7 @@ Input: root = [5,3,6,2,4,null,null,1], k = 3
   /
  1
 Output: 3
-
 */
-
-
-import DS.TreeNode;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
 
 class KthSmallestElementInBST {
     //iteration method

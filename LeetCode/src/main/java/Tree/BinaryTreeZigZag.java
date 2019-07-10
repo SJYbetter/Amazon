@@ -1,19 +1,13 @@
+package Tree;
+
+import DS.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 class BinaryTreeZigZag {
-	
-	public class TreeNode{
-		int val;
-		TreeNode left;
-		TreeNode right;
-		public TreeNode(int x) {
-			this.val = x;
-		}
-	}
-	
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null) return ans;

@@ -13,8 +13,8 @@ class ValidPalindromeII {
         int i = 0, j = s.length()-1;
         while (i < j){
             if (s.charAt(i) != s.charAt(j)) break;
-            i++;
-            j--;
+            i ++;
+            j --;
         }
         return check(s,i) || check(s,j);
     }
