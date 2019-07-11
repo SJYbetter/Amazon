@@ -1,4 +1,4 @@
-/*
+package Array;/*
 Input:
 nums1 = [1,2,3,0,0,0], m = 3
 nums2 = [2,5,6],       n = 3
@@ -7,7 +7,7 @@ Output: [1,2,2,3,5,6]
 */
 
 
-class Solution {
+class MergeTwoSortedArray {
     public void mergeSort(int[] nums1, int m, int[] nums2, int n) {
         if (m == 0 && n == 0) return;
 
@@ -28,6 +28,5 @@ class Solution {
         while (j >= 0){
             nums1[idx--] = nums2[j--];
         }
-
     }
 }

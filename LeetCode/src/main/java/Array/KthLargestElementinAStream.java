@@ -1,8 +1,13 @@
-class KthLargest {
-    private PriorityQueue<Integer> pq;
-    final int k;
+package Array;
 
-    public KthLargest(int k, int[] nums) {
+import java.util.PriorityQueue;
+
+
+class KthLargestElementinAStream {
+    private PriorityQueue<Integer> pq;
+    int k = 0;
+
+    public void KthLargest(int k, int[] nums) {
         this.k = k;
         pq = new PriorityQueue<>(k);
         for (int i : nums){

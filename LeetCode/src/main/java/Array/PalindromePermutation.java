@@ -1,4 +1,9 @@
-class Solution {
+package Array;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class PalindromePermutation {
 
     //using map
     public boolean canPermutePalindrome(String s) {
@@ -16,10 +21,7 @@ class Solution {
             if (times % 2 == 1) count++;
         }
 
-        if (count == 0 || count == 1) return true;
-        return false;
+        return count==0 || count == 1;
     }
-
-    //using list
     
 }
