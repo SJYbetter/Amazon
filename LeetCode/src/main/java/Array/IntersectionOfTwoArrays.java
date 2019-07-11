@@ -1,10 +1,13 @@
+package Array;
 /*
 Input: nums1 = [1,2,2,1], nums2 = [2,2]
 Output: [2]
 */
 
 
-class Solution {
+import java.util.*;
+
+class IntersectionOfTwoArrays {
     public int[] intersection(int[] nums1, int[] nums2) {
         if (nums1 == null || nums2 == null) return new int[]{};
         List<Integer> ans = new ArrayList<>();
@@ -30,13 +33,14 @@ class Solution {
         }
         return res;
      }
-}
+
 //Input: nums1 = [1,2,2,1], nums2 = [2,2]
 //Output: [2,2]
 
-class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
+
+    public int[] intersect1(int[] nums1, int[] nums2) {
         if (nums1 == null || nums2 == null) return new int[]{};
+
 
         Map<Integer, Integer> map = new HashMap<>();
         List<Integer> list = new ArrayList<>();
@@ -56,6 +60,7 @@ class Solution {
 
             }
         }
+
         // convert the arraylist to list
         int[] ans = new int[list.size()];
         // i is the index
@@ -64,7 +69,6 @@ class Solution {
             ans[i++] = k;
         }
         return ans;
-
 
     }
 }

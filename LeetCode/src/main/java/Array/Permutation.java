@@ -1,4 +1,10 @@
-class Solution {
+package Array;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+class Permutation {
     public List<List<Integer>> permute(int[] nums) {
         // store the answer
         List<List<Integer>> ans = new LinkedList<>();
@@ -7,7 +13,7 @@ class Solution {
         //dfs by using recursion
         dfs(nums, new boolean[nums.length], new ArrayList<Integer>(), ans);
         return ans;
-        }
+    }
 
     private void dfs(int[] nums,
                      boolean[] visited, // check the number is vistied ot not

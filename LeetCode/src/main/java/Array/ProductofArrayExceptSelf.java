@@ -1,4 +1,6 @@
-class Solution {
+package Array;
+
+class ProductofArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         if (nums == null || nums.length == 0) return new int[0];
 

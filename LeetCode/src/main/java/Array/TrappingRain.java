@@ -1,4 +1,6 @@
-public class Solution{
+package Array;
+
+class TrappingRain{
 
     //对于每一个位置i，存水的量=min(左边最大值，右边最大值) - h[i],
     //为什么求左边最大值和右边最大值？其实就是找每个点两边的墙，只有墙中间的部分能存水【这种思路是求每个点i的纵向存水量】
@@ -25,7 +27,4 @@ public class Solution{
         }
         return maxWater;
     }
-
-
-
 }

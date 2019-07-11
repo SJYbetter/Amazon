@@ -1,4 +1,6 @@
-class Solution {
+package Array;
+
+class Pow {
     public double myPow(double x, int n) {
         long N = n;
         // if n is negative, the base use 1/x instead

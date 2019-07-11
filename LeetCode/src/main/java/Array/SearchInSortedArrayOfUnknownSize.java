@@ -1,4 +1,6 @@
-class Solution {
+package Array;
+
+class SearchInSortedArrayOfUnknownSize {
     public int search(ArrayReader reader, int target) {
     int hi = 1;
     

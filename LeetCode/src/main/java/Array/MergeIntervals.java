@@ -1,4 +1,4 @@
-/*
+package Array;/*
 
 Example 1:
 	Input: [(1,3)]
@@ -11,19 +11,25 @@ Example 2:
 
 */
 
-//Definition id Interval
-public class Interval{
-    int start, end;
-    public Interval(int s, int e){
-        this.start = s;
-        this.end = e;
-    }
-}
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
-public class Solution{
+//Definition id Interval
+
+
+public class MergeIntervals{
+
+    class Interval{
+        int start, end;
+        public Interval(int s, int e){
+            this.start = s;
+            this.end = e;
+        }
+    }
     public List<Interval> mergeIntervals(List<Interval> intervals){
         List<Interval> ans = new ArrayList<>();
-        if (intervals == null || intervals.length == 0) return ans;
+        if (intervals == null || intervals.size() == 0) return ans;
         //sort according to the start
         intervals.sort(Comparator.comparing(i -> i.start));
 
@@ -43,15 +49,10 @@ public class Solution{
         return ans;
     }
 
-}
+
 
 // merge two intervals
-public class Solution {
-    /**
-     * @param list1: one of the given list
-     * @param list2: another list
-     * @return: the new sorted list of interval
-     */
+
     public List<Interval> mergeTwoInterval(List<Interval> list1, List<Interval> list2) {
         List<Interval> results = new ArrayList<>();
         if (list1 == null || list2 == null) {

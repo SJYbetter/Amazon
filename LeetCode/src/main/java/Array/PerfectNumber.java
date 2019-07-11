@@ -1,4 +1,6 @@
-class Solution {
+package Array;
+
+class PerfectNumber {
     public boolean checkPerfectNumber(int num) {
         if (num == 1) return false;
 

@@ -1,8 +1,13 @@
-public class Solution{
+package Array;
+
+class SearchInRotatedArray{
 
 /*
 using binary search
-compare the first number with middle number, to decide the position of the breakpoint, if larger than middle number, the breakpoint is on the left side of middle, else on the right side of middle. Then using the binarySearch algorithm to do this.
+compare the first number with middle number,
+to decide the position of the breakpoint,
+if larger than middle number, the breakpoint is on the left side of middle,
+else on the right side of middle. Then using the binarySearch algorithm to do this.
 */
     public int searchRotatedArray(int[] nums, int target){
         if (nums == null || nums.length == 0) return -1;

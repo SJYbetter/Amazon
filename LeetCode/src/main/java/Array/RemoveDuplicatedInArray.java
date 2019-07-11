@@ -9,7 +9,7 @@ i is then incremented and we repeat the same process again until j reaches the e
 */
 
 
-class RemoveDuplicates {
+class RemoveDuplicatedInArray {
     public static int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;

@@ -1,3 +1,5 @@
+package Array;
+
 import java.util.PriorityQueue;
 
 /*
@@ -14,13 +16,13 @@ double findMedian() - Return the median of all elements so far.
 */
 
 
-class MedianFinder {
+class FindMedianfromDataStream{
     private PriorityQueue<Integer> minHeap, maxHeap;
     private int size;
     private int median;
 
     /** initialize your data structure here. */
-    public MedianFinder() {
+    public FindMedianfromDataStream() {
         minHeap = new PriorityQueue<>();
         maxHeap = new PriorityQueue<>((c1,c2) -> c2-c1);
         size = 0;
