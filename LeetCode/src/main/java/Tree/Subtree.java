@@ -1,5 +1,9 @@
+package Tree;
+
+import DS.TreeNode;
+
 class Subtree {
-    public boolean isSubtree(TreeNode s, TreeNode t) {
+    private boolean isSubtree(TreeNode s, TreeNode t) {
         if (s == null) return false;
         if (isSame(s,t)) return true ;
         return isSubtree(s.left, t) || isSubtree(s.right, t);
