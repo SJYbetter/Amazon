@@ -1,7 +1,7 @@
 package DP;
 
 public class HouseRobber {
-    public static int houseRobber(int[] nums){
+    private static int houseRobber(int[] nums){
         if (nums == null || nums.length <= 1){
             return nums.length == 1 ? nums[0]:0;
         }
@@ -9,7 +9,8 @@ public class HouseRobber {
         int[] dp = new int[nums.length+1];
         dp[0] = 0;
         dp[1] = nums[0];
-        for (int i = 2; i < nums.length+1; i++){
+        for (int i = 2; i < nums.length+1; i ++){
+            //stolen i or not
             dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i-1]);
         }
         return dp[dp.length-1];
