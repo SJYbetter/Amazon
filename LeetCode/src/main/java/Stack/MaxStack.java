@@ -1,7 +1,11 @@
+package Stack;
+
+import java.util.Stack;
+
 public class MaxStack{
 
-    Stack<Integer> stack;    //[1,3,1,4,2]
-    Stack<Integer> maxstack; //[1,3,3,4,4]
+    private Stack<Integer> stack;    //[1,3,1,4,2]
+    private Stack<Integer> maxstack; //[1,3,3,4,4]
     public MaxStack(){
         stack = new Stack<>();
         maxstack = new Stack<>();
@@ -13,6 +17,7 @@ public class MaxStack{
 
     private void pushHelper(int x){
         //compare x and current max number in maxstack
+        // but should be care about the maxstack is empty or not
         int tempMax = maxstack.isEmpty() ? Integer.MIN_VALUE : maxstack.peek();
         if (x > tempMax){
             tempMax = x;
@@ -31,11 +36,10 @@ public class MaxStack{
     }
 
 
-
     public int popMax(){
         int max = maxstack.peek();
         Stack<Integer> temp = new Stack<>();
-        while (stack.peek != max){
+        while (stack.peek() != max){
             temp.push(stack.pop());
             maxstack.pop();
         }
@@ -49,8 +53,6 @@ public class MaxStack{
         }
         return max;
     }
-
-
 
     public int peekMax(){
         return maxstack.peek();

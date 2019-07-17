@@ -1,15 +1,9 @@
+package Tree;
+
+import DS.TreeNode;
 
 public class Mirror {
-	//definition of TreeNode
-	public class TreeNode{
-		int val;
-		TreeNode left;
-		TreeNode right;
-		public TreeNode(int val) {
-			this.val = val;
-		}
-	}
-	
+
 	public static boolean isMirror(TreeNode root) {
 		if (root == null) return true;
 		return help(root.left, root.right);

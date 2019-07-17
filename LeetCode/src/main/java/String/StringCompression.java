@@ -1,3 +1,4 @@
+package String;
 
 public class StringCompression {
 	//out put the index

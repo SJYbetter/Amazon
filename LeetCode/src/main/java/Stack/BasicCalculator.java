@@ -1,3 +1,5 @@
+package Stack;
+
 import java.util.Stack;
 
 // 3 + 2 * 2 //All intermediate results will be in the range of [-2147483648, 2147483647].
@@ -19,7 +21,7 @@ public class BasicCalculator {
         }
         //not digit, not letter, not empty space
         if((!Character.isDigit(s.charAt(i)) && ' '!=s.charAt(i)) && !Character.isLetter(s.charAt(i)) || i==len-1){
-        	if (numberSeen == false) {
+        	if (!numberSeen) {
         		throw new IllegalArgumentException("invalid expression");
         	}
             if(sign=='-'){

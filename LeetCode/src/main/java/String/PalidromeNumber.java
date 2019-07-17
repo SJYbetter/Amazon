@@ -1,7 +1,7 @@
 package String;
 
 public class PalidromeNumber {
-	public static boolean palidromeNumber(int x) {
+	private static boolean palidromeNumber(int x) {
 		if (x < 0) return false;
 		String s = Integer.toString(x);
 		int i = 0, j = s.length()-1;

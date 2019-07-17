@@ -1,6 +1,13 @@
-public class MinStack {
-    Stack<Integer> stack;
-    Stack<Integer> minstack;
+package Stack;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
+
+class MinStack {
+    private Stack<Integer> stack;
+    private Stack<Integer> minstack;
 
     public MinStack() {
         // do intialization if necessary
@@ -38,14 +45,13 @@ public class MinStack {
 }
 
 //利用一个ArrayList
-class MinStack {
+class MinStack1 {
 
     private List<Integer> array;
     /** initialize your data structure here. */
-    public MinStack() {
+    public MinStack1() {
         array = new ArrayList<>();
     }
-
     public void push(int x) {
         array.add(x);
     }

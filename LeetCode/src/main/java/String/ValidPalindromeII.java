@@ -23,8 +23,9 @@ class ValidPalindromeII {
     private boolean check(String s, int k){
         int i = 0, j = s.length()-1;
         while (i < j){
-            if (i == k) i++;
-            if (j == k) j--;
+            //pass index k
+            if (i == k) i ++;
+            if (j == k) j --;
             if (s.charAt(i) != s.charAt(j)) return false;
             else{
                 i++;
@@ -32,5 +33,10 @@ class ValidPalindromeII {
             }
         }
         return true;
+    }
+
+    public static void main(String[] args){
+
+
     }
 }

@@ -1,12 +1,12 @@
-class Solution {
+package Stack;
+
+class NextGreaterNumber {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         if (nums1 == null || nums2 == null) return new int[]{};
         int[] ans = new int[nums1.length];
         int i, j , next;
-
         for (i = 0; i < nums1.length; i++){
             next = -1;
-
             for (j = 0; j < nums2.length; j++){
                 if (nums2[j] != nums1[i]) continue;
                 else{
@@ -22,5 +22,13 @@ class Solution {
             ans[i] = next;
         }
         return ans;
+    }
+    //nums1 = [1,3,2], nums2 = [3,4,1,2]
+    //ans = [2, 4, -1]
+
+    public int[] nextGreaterElement2(int[] nums1, int[] nums2){
+        if (nums1 == null || nums2 == null) return new int[]{};
+
+
     }
 }
