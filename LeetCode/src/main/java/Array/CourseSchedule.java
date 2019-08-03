@@ -1,7 +1,6 @@
 package Array;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class CourseSchedule {
 
@@ -42,5 +41,50 @@ public class CourseSchedule {
         }
 
         return count == numCourses;
+    }
+
+    public boolean canFinish1(int numCourses, int[][] prerequisites) {
+        //edge case
+        if (numCourses == 0) return true;
+        if (prerequisites == null || prerequisites.length == 0) return true;
+        //key is course, value is later course after take "key" course
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        //cal the indegree to put in queue
+        int[] indegree = new int[numCourses];
+        //go through the input to update the indegree and the matrix
+        for (int i = 0; i < prerequisites.length; i++){
+            int first = prerequisites[i][1];
+            int last = prerequisites[i][0];
+            indegree[last] ++;
+            if (!map.containsKey(first)){
+                map.put(first, new ArrayList<>());
+            }
+            map.get(first).add(last);
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++){
+            if (indegree[i] == 0){
+                q.offer(i);
+            }
+        }
+
+        int count = 0;
+        while (!q.isEmpty()){
+            int pre = q.poll();
+            count ++;
+            List<Integer> neighbor = map.get(pre);
+            //System.out.println(neighbor);
+            //！！！！！！很重要！！！！
+            if (neighbor == null) continue;
+            for (int i: neighbor){
+                indegree[i] --;
+                if (indegree[i] == 0){
+                    q.offer(i);
+                }
+            }
+        }
+        return count == numCourses;
+
     }
 }

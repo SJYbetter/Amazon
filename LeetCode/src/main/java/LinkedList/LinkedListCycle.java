@@ -23,7 +23,7 @@ class LinkedListCycle {
         }
         return false;
     }
-
+    //using the common sense to find whether there is cycle or not
     public boolean hasCycle1(ListNode head){
         //no cycle
         if (head == null || head.next == null) return false;
@@ -36,4 +36,5 @@ class LinkedListCycle {
         }
         return false;
     }
+
 }

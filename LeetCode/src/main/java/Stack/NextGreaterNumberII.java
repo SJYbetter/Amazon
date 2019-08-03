@@ -1,4 +1,9 @@
-class Solution {
+package Stack;
+
+import java.util.Arrays;
+import java.util.Stack;
+
+class NextGreaterNumberII {
     public int[] nextGreaterElements(int[] nums) {
         int n = nums.length;
         int next[] = new int[n];

@@ -1,4 +1,4 @@
-//Input: ["h","e","l","l","o"]
+package String;//Input: ["h","e","l","l","o"]
 //Output: ["o","l","l","e","h"]
 
 
@@ -9,14 +9,14 @@ class ReverseString {
         // using two pointers to track
         int start = 0, end = s.length-1;
         // in place to loop
-        while (start + 1 <= end){
+        while (start + 1 <= end) {
             char temp = s[start];
             s[start] = s[end];
             s[end] = temp;
-            start ++;
-            end --;
+            start++;
+            end--;
         }
-        return;
+
     }
 
 //input 是一个string 而且有空格
@@ -27,6 +27,7 @@ public String reverseString(String s) {
     StringBuilder sb = new StringBuilder();
 
     for (int i = s.length()-1; i >= 0; i --){
+        if (s.charAt(i) == ' ') continue;
         sb.append(s.charAt(i));
     }
     return sb.toString();

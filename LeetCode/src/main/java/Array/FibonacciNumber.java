@@ -6,22 +6,21 @@ package Array;
 
 
 class FibonacciNumber {
-    public int fib(int N) {
+
+    public int fib1(int N) {
         if (N == 0) return 0;
         if (N == 1) return 1;
-        return fib(N-1) + fib(N-2);
+        return fib1(N-1) + fib1(N-2);
     }
 
 
     
 //Time complexity: O(n)
 //Space complexity: O(n)
+    //reduce the time complexity to avoid recompute
+    public int fib2(int N){
 
-
-    public int fib1(int N)
-    {
-        if(N <= 1)
-            return N;
+        if(N <= 1) return N;
 
 		int[] fib_cache = new int[N + 1];
 		fib_cache[1] = 1;
@@ -31,5 +30,11 @@ class FibonacciNumber {
 			fib_cache[i] = fib_cache[i - 1] + fib_cache[i - 2];
 		}
 		return fib_cache[N];
+    }
+
+
+    public int fib3(int N){
+
+        
     }
 }

@@ -1,14 +1,9 @@
+package Tree;
+
+import DS.TreeNode;
+
 public class SymmetricTree{
-	
-	public class TreeNode{
-		int val;
-		TreeNode left;
-		TreeNode right;
-		public TreeNode(int x) {
-			this.val = x;
-		}
-		
-	}
+
     public boolean isSymmetric(TreeNode root){
         if (root == null) return true;
         return isMirror(root.left, root.right);

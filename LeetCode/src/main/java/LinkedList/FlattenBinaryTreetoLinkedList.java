@@ -3,6 +3,7 @@ package LinkedList;
 import DS.TreeNode;
 
 public class FlattenBinaryTreetoLinkedList {
+
     public void flattern(TreeNode root){
         if (root == null) return;
         flattern(root.left);

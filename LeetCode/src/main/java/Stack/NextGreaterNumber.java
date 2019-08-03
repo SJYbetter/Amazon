@@ -28,6 +28,8 @@ class NextGreaterNumber {
 
     public int[] nextGreaterElement2(int[] nums1, int[] nums2){
         if (nums1 == null || nums2 == null) return new int[]{};
+        //suing stack to finish this
+        return new int[0];
 
 
     }

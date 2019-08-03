@@ -24,7 +24,9 @@ class MergeKSortedList {
         ListNode temp = ans;
         //put all head into the heap, because all heads are smallest number in its corresponding LinkedList
         for (ListNode l : lists){
-            if (l != null) pq.offer(l);
+            if (l != null) {
+                pq.offer(l);
+            }
         }
 
         while (!pq.isEmpty()){
