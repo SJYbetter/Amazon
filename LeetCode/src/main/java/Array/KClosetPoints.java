@@ -1,3 +1,5 @@
+package Array;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
@@ -58,7 +60,7 @@ public class KClosetPoints {
         return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
     }
 
-}
+
 
 
 
@@ -71,7 +73,7 @@ The distance between (-2, 2) and the origin is sqrt(8).
 Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
 We only want the closest K = 1 points from the origin, so the answer is just [[-2,2]].
 */
-public class KClosetPoints1{
+
 	public int[][] kClosest(int[][] points, int K) {
         int m = points.length, n = points[0].length;
 
@@ -91,13 +93,13 @@ public class KClosetPoints1{
     }
 
     private int getDis(int[] point){
-        return point[0]*point[0] + point[1]*point[1];
+	    return point[0]*point[0] + point[1]*point[1];
     }
-}
+
 
 //以matrix的形式给出，new一个新的comparator就好了
-public class KClosetPoints2{
-	public int[][] kCloset(int[][] points, int k){
+
+	public int[][] kCloset2(int[][] points, int k){
 		//maxHeap Aaccording to its
 		PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> (p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] - p1[1] * p1[1]));
 
@@ -114,5 +116,7 @@ public class KClosetPoints2{
 			ans[i] = pq.peek();
 			pq.poll();
 		}
-	}
+		 return ans;
+
+    }
 }

@@ -74,15 +74,16 @@ public class FactualOA {
     //算所有库的个数的那个题
     private static Map<String, Integer> moduleCount = new HashMap<>();
     public static int solution2(String modulesToBuild, String[][] dependencies){
+        //check edge case
+        if (dependencies == null || dependencies.length == 0) return 0;
+        if (modulesToBuild == null || "".equals(modulesToBuild)) return 0;
+
         Map<String, List<String>> des = mapifyArgument(dependencies); //这是已经写好的一个方法，也就是dependencies现在已经是map形式了
         //to do
 
-        if (modulesToBuild == null || "".equals(modulesToBuild)) return 0;
-        buildModuleCount(des);
         Set<String> visited = new HashSet<>();
         dfs(modulesToBuild, des, visited);
         return visited.size();
-
     }
 
     private static Map<String, List<String>> mapifyArgument(String[][] dependencies){
@@ -97,22 +98,25 @@ public class FactualOA {
         return map;
     }
 
-    private static void buildModuleCount(Map<String, List<String>> des) {
-        for (Map.Entry<String, List<String>> entry: des.entrySet()){
-            for (String module: entry.getValue()){
-                moduleCount.put(module, moduleCount.getOrDefault(module, 0)+1);
-            }
-            moduleCount.put(entry.getKey(), entry.getValue().size());
-        }
 
-    }
 
     private static void dfs(String modulesToBuild,
                             Map<String, List<String>> des,
                             Set<String> visited){
+        List<String> dependencies = des.getOrDefault(modulesToBuild, Collections.emptyList());
+        //visited.add(modulesToBuild);
+        if (visited.contains(modulesToBuild)) return;
+        for (String x: dependencies){
+            if (!visited.contains(x)) {
+                dfs(x, des, visited);
+            }
+        }
+        visited.add(modulesToBuild);
 
     }
 
+    public static void main(String[] args){
 
 
     }
+}

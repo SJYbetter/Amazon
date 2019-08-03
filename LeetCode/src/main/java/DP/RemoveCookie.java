@@ -9,17 +9,5 @@ public class RemoveCookie {
         return removeChocolate(n-1) + removeChocolate(n-3);
     }
     //remove
-    public static int removeChocolate1(int n){
-        int ans = 0;
-        if (n <= 1) return n;
-        dfs(ans, n);
-        return ans;
-    }
 
-
-    private static void dfs(int count, int remainNumber){
-        if (remainNumber == 0) return;
-
-
-    }
 }
