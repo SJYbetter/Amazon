@@ -10,7 +10,7 @@ public class FactualOA {
         if (readings == null || readings.length == 0) return distance;
 
         //sort according to the timeStamp
-        Arrays.sort(readings, (a, b) -> Double.compare(a[0], b[0]));
+        //Arrays.sort(readings, (a, b) -> Double.compare(a[0], b[0]));
 
         double[] prev = readings[0];
         double prevTimeStamp = prev[0];
@@ -32,7 +32,7 @@ public class FactualOA {
                 prevTimeStamp = curTimeStamp;
             }
         }
-        return distance;
+        return distance/3600;
     }
 
         //找最小的距离那个题（其实就是lc296 meeting那个
@@ -116,6 +116,7 @@ public class FactualOA {
     }
 
     public static void main(String[] args){
+
 
 
     }

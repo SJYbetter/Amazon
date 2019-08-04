@@ -1,4 +1,5 @@
 package Array;
+/*
 public class FirstBadVersion {
 	public static class Solution extends VersionControl {
 	    public int firstBadVersion(int n) {
@@ -23,3 +24,6 @@ public class FirstBadVersion {
 	}
 
 }
+
+
+ */

@@ -7,7 +7,6 @@ package Design;
 */
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 class MyQueue {
@@ -60,11 +59,11 @@ class MyQueue {
 //using an ArrayList to implement a queue
 class MyQueue1{
     private int pointer;
-    private List<Integer> list;
+    private ArrayList<Integer> list;
 
     public MyQueue1(){
         pointer = 0;
-        list = new ArrayList();
+        list = new ArrayList<>();
     }
 
     public void push(int x){
@@ -77,6 +76,5 @@ class MyQueue1{
 
     public int  peek(){
         return list.get(list.get(0));
-
     }
 }

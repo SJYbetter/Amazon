@@ -1,10 +1,6 @@
 package Array;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /*
  * Input: points = [[4,6],[4,7],[4,4],[2,5],[1,1]], origin = [0, 0], k = 3
@@ -113,10 +109,29 @@ We only want the closest K = 1 points from the origin, so the answer is just [[-
 		int[][] ans = new int[k][2];
 		
 		for (int i = k-1; i >= 0; i--){
-			ans[i] = pq.peek();
-			pq.poll();
-		}
-		 return ans;
+			ans[i] = pq.poll();
 
+		}
+		return ans;
+
+    }
+
+    public int[][] kCloset3(int[][] points, int k){
+	    if (points == null || points.length == 0) return new int[][]{};
+	    int[][] ans = new int[k][2];
+	    int[] distance = new int[points.length];
+	    for (int i = 0; i < points.length; i++){
+	        int dis = getDis(points[i]);
+	        distance[i] = dis;
+        }
+        Arrays.sort(distance);
+	    int checkPoint = distance[k-1];
+	    int i = 0;
+	    for (int j = 0; j < points.length; j++){
+	        if (getDis(points[j]) <= checkPoint){
+	            ans[i ++] = points[j];
+            }
+        }
+	    return ans;
     }
 }

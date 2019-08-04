@@ -1,3 +1,5 @@
+package String;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +30,7 @@ public class TopKFrequencyWords {
         }
 
         for (int i = 0; i < k; i++){
-            topk.add(0, pq.poll());
+            topk.add(0, pq.poll().getKey());
         }
         return topk;
     }

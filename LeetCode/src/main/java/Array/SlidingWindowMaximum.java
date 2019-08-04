@@ -1,3 +1,8 @@
+package Array;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class SlidingWindowMaximum {
     /*
     At each i, we keep "promising" elements, which are potentially max number in window [i-(k-1),i] or any subsequent window. This means
@@ -24,7 +29,7 @@ public class SlidingWindowMaximum {
                 q.poll();
             }
             // remove smaller numbers in k range as they are useless
-            while (!q.isEmpty() && nums[q.peekLast()] < a[i]) {
+            while (!q.isEmpty() && nums[q.peekLast()] < nums[i]) {
                 q.pollLast();
             }
             // q contains index... r contains content
