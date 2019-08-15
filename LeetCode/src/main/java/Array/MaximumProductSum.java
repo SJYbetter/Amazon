@@ -1,3 +1,4 @@
+package Array;
 
 public class MaximumProductSum {
 	public static int maxPro(int[] nums) {

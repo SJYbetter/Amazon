@@ -6,7 +6,7 @@ import java.util.Queue;
 
 class SlidingPuzzle {
     public int slidingPuzzle(int[][] board) {
-       String target = "123450";
+        String target = "123450";
         String start = "";
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {

@@ -17,6 +17,9 @@ public class FactualOA {
 
         //endTime before the first start time
         if (prevTimeStamp >= endTime) return distance;
+        if (readings.length == 1){
+            distance = (endTime - prevTimeStamp) * prev[1];
+        }
 
         for (int i = 1; i < readings.length; i++) {
             double[] cur = readings[i];

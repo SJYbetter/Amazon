@@ -29,4 +29,16 @@ Not 7-1 = 6, as selling price needs to be larger than buying price.
         return profit;
 
     }
+
+    //could sale and buy several times
+    public int maxProfit2(int[] prices){
+        if (prices == null || prices.length == 0) return 0;
+        int profit = 0;
+        for (int i = 1; i < prices.length; i++){
+            if (prices[i] < prices[i-1]){
+                profit += prices[i] - prices[i-1];
+            }
+        }
+        return profit;
+    }
 }
