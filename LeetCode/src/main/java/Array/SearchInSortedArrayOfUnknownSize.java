@@ -1,5 +1,9 @@
 package Array;
-
+class ArrayReader{
+    public int get(int val){
+        return -1;
+    }
+}
 class SearchInSortedArrayOfUnknownSize {
     public int search(ArrayReader reader, int target) {
     int hi = 1;
