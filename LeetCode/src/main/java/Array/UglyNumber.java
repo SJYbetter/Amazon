@@ -11,5 +11,7 @@ public class UglyNumber {
 			num = num / 3;
 		while (num % 5 == 0)
 			num = num / 5;
+
+		return false;
 	}
 }

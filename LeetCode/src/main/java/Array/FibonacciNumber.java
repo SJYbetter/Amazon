@@ -33,8 +33,4 @@ class FibonacciNumber {
     }
 
 
-    public int fib3(int N){
-
-        
-    }
 }
