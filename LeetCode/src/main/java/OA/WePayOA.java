@@ -3,7 +3,7 @@ package OA;
 import java.util.ArrayDeque;
 import java.util.Calendar;
 
-public class wepayOA {
+public class WePayOA {
 	
 	public static boolean alert(int[] nums, int window, double weight) {
 		if (nums == null || nums.length == 0 || window == 0) return false;

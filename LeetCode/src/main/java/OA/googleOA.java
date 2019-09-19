@@ -61,11 +61,29 @@ public class googleOA {
 		return maxLevel;	
 	}
 
+	public static int waterFlower(int[] plants, int capacity){
+		if (plants == null || plants.length == 0) return 0;
+		int steps = 0;
+		int water = capacity;
+		for (int i = 0; i < plants.length; i++){
+			if (plants[i] <= water){
+				steps ++;
+				water -= plants[i];
+			}else{
+				steps += i * 2;
+				steps ++;
+				water = capacity - plants[i];
+			}
+		}
+		return steps;
+
+	}
+
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] ans = new int[]{1, -4, 5, 1};
-		int level = sumMax(ans);
-		System.out.println(level);
+		int[] plants = {2,5,6,6,6};
+		System.out.println(waterFlower(plants, 10));
 
 	}
 

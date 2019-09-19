@@ -7,25 +7,57 @@ Explanation: '*' matches any sequence.
 */
 
 public class WildcardMatching {
-    public boolean isMatch(String s, String p) {
-        boolean[][] match = new boolean[s.length() + 1][p.length() + 1];
-        match[s.length()][p.length()] = true;
-        for (int i = p.length() - 1; i >= 0; i--) {
-            if (p.charAt(i) != '*')
-                break;
-            else
-                match[s.length()][i] = true;
+    static boolean[][] memo;
+    static boolean[][] visited;
+    public static boolean isMatch(String s, String p) {
+        if (p == null || "".equals(p)) return false;
+        int m = s.length(), n = p.length();
+        memo = new boolean[m][n];
+        visited = new boolean[m][n];
+        return helper(s, 0, p, 0);
+    }
+
+    private static boolean helper(String s, int sIndex, String p, int pIndex){
+        if (sIndex == s.length()){
+            return isAllStar(p, pIndex);
         }
-        for (int i = s.length() - 1; i >= 0; i--) {
-            for (int j = p.length() - 1; j >= 0; j--) {
-                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?')
-                    match[i][j] = match[i + 1][j + 1];
-                else if (p.charAt(j) == '*')
-                    match[i][j] = match[i + 1][j] || match[i][j + 1];
-                else
-                    match[i][j] = false;
+        if (pIndex == p.length()){
+            return s.length() == sIndex;
+        }
+
+        if (visited[sIndex][pIndex]){
+            return memo[sIndex][pIndex];
+        }
+
+
+        char charS = s.charAt(sIndex);
+        char charP = p.charAt(pIndex);
+        boolean match = false;
+        if (charP == '*'){
+            match = helper(s, sIndex, p, pIndex+1) || helper(s, sIndex+1, p, pIndex);
+        }else{
+            match = isOneCharMatch(charS, charP) && helper(s, sIndex+1, p, pIndex+1);
+        }
+
+        visited[sIndex][pIndex] = true;
+        memo[sIndex][pIndex] = match;
+        return match;
+    }
+
+    private static boolean isAllStar(String p, int pIndex){
+        for (int i = pIndex; i < p.length(); i ++){
+            if (p.charAt(i) != '*'){
+                return false;
             }
         }
-        return match[0][0];
+        return true;
+    }
+
+    private static boolean isOneCharMatch(char s, char p){
+        return p == '?' || s == p;
+    }
+
+    public static void main(String[] args){
+        System.out.println(isMatch("a", "*"));
     }
 }

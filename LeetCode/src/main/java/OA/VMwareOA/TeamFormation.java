@@ -1,7 +1,6 @@
-package OA;
+package OA.VMwareOA;
 
-public class VMWareOA {
-
+public class TeamFormation {
     public static int teamFormation2(int[] skills, int k, int lower, int upper){
         int candiate = 0;
         for (int i: skills){
@@ -9,7 +8,6 @@ public class VMWareOA {
                 candiate ++;
             }
         }
-
         if (candiate < k) return 0;
         int teamNum = 0;
         for (int i = k; i <= candiate; i ++){
@@ -31,8 +29,4 @@ public class VMWareOA {
         return ans;
     }
 
-    public static void main(String[] args){
-        int[] skills = {12, 4, 6, 13, 5, 10};
-        System.out.println(teamFormation2(skills, 3, 4, 10));
-    }
 }
