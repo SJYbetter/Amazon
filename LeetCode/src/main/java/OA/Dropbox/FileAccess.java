@@ -21,8 +21,38 @@ public class FileAccess {
         return map;
     }
 
-    public static List<String> getAllAccessFile(Map<String, String> map, Set<String> set){
-        return new ArrayList<>();
+    public static List<String> getAllAccessFile(String[][] files, Set<String> set){
+        Map<String, List<String>> graph = fileGraph(files);
+        List<String> allAccessFiles = new ArrayList<>();
+        for (String acc: set){
+            allAccessFiles.add(acc);
+            dfs(acc, allAccessFiles, graph);
+        }
+        return allAccessFiles;
+
+    }
+
+    private static void dfs(String file, List<String> files, Map<String, List<String>> graph){
+        if (!graph.containsKey(file)) return;
+        for (String subFile: graph.get(file)){
+            //files.add(subFile);
+            dfs(subFile, files, graph);
+        }
+    }
+
+    private static Map<String, List<String>> fileGraph(String[][] files){
+        Map<String, List<String>> graph = new HashMap<>();
+
+        for (String[] relation: files){
+            String parent = relation[1];
+            String child = relation[0];
+            if (parent == null) continue;
+            if (!graph.containsKey(parent)){
+                graph.put(parent, new ArrayList<>());
+            }
+            graph.get(parent).add(child);
+        }
+        return graph;
     }
 
     public static void main(String[] args){
@@ -33,5 +63,10 @@ public class FileAccess {
         System.out.println(hasAccess("C", graph, access));
         System.out.println(hasAccess("F", graph, access));
         System.out.println(hasAccess("G", graph, access));
+
+
+        for (String file: getAllAccessFile(folders, access)){
+            System.out.println(file);
+        }
     }
 }

@@ -42,12 +42,7 @@ public class Nasa {
             this.y = y;
             this.img = img;
         }
-        int getX(){
-            return this.x;
-        }
-        int getY(){
-            return this.y;
-        }
+
         Image getImage(int x, int y){
             return this.img;
         }
@@ -63,26 +58,24 @@ public class Nasa {
     }
 
     public class SpacePanorama{
-        private Sector[][] array;
+        private Sector[][] grid;
         public SpacePanorama(int rows, int cols){
-            array = new Sector[rows][cols];
+            grid = new Sector[rows][cols];
 
         }
 
         public void update(int x, int y, Image img){
-
-
+            Sector cur = grid[x][y];
+            cur.img = img;
         }
 
         public Image fetch(int x, int y){
-            return new Image(1,1);
+            Sector pos = grid[x][y];
+            return pos.img;
 
         }
 
-        //public Sector getStalestSector(){
-            //return new Sector(1,1);
 
-        //}
 
     }
 }
