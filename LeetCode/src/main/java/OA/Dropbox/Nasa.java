@@ -13,66 +13,119 @@ import java.util.*;
 
 
 public class Nasa {
-    //file class
-    /*public class File {
-        public File(String path){
+/*
+    class File {
+        public File(String path) {
 
         }
+        public Boolean exists() {
 
-        public boolean exsits(){
-            return true;
+
         }
+        public byte[] read() {
 
-        public byte[] read(){
-            return new byte[]{};
         }
-
-        public void write(byte[] bytes){
+        public void write(byte[] bytes) {
 
         }
     }
 */
-    //sector class
-    class Sector{
+    class Image {
+        public Image(byte[] bytes) {
+
+        }
+        public byte[] getBytes() {
+
+        } // no more than 1MB in size
+    }
+
+    class Sector {
         int x;
         int y;
         Image img;
-        public Sector(int x, int y, Image img){
+        public Sector(int x, int y, Image img) {
             this.x = x;
             this.y = y;
             this.img = img;
         }
 
-        Image getImage(int x, int y){
-            return this.img;
+        public int getX() {
+            return this.x;
+        }
+        public int getY() {
+            return this.y;
         }
     }
 
-    class Image{
-        int width;
-        int hight;
-        public Image(int width, int hight){
-            this.hight = hight;
-            this.width = width;
-        }
-    }
-
-    public class SpacePanorama{
-        private Sector[][] grid;
-        public SpacePanorama(int rows, int cols){
-            grid = new Sector[rows][cols];
-
+    /**
+     * row-major indexing to be consistent.
+     */
+    public class SpacePanorama {
+        /**
+         * initializes the data structure. rows x cols y is the sector layout.
+         * width, height can be as large as 1K each.
+         */
+        class Node{
+            Sector sector;
+            Node next;
+            Node prev;
         }
 
-        public void update(int x, int y, Image img){
-            Sector cur = grid[x][y];
-            cur.img = img;
+        private Sector[][] pos;
+        private Node head;
+        private Node tail;
+        private Map<Sector, Node> map = new HashMap<>();
+
+        public SpacePanorama(int rows, int cols) {
+            pos = new Sector[rows][cols];
+            head = new Node();
+            tail = new Node();
+            head.next = tail;
+            tail.prev = head;
         }
 
-        public Image fetch(int x, int y){
-            Sector pos = grid[x][y];
-            return pos.img;
+        private void moveToHead(Sector sector){
+            Node cur = map.get(sector);
+            Node next = head.next;
+            head.next = cur;
+            cur.prev = head;
+            cur.next = next;
+            next.prev = cur;
+        }
 
+        /**
+         * The Hubble will occasionally call this (via some radio wave communication)
+         * to report new imagery for the sector at (y, x)
+         * Images can be up to 1MB in size.
+         */
+        public void update(int y, int x, Image image) {
+            Sector sector = pos[x][y];
+            sector.img = image;
+            Node node = map.get(sector);
+            moveToHead(sector);
+        }
+
+        /**
+         * NASA will occasionally call this to check the view of a particular sector.
+         */
+        public Image fetch(int y, int x) {
+            Sector sector = pos[y][x];
+            return sector.img;
+        }
+
+        /**
+         * return the 2D index of the sector that has the stalest data.
+         * the idea is that this may help the telescope decide where to aim next.
+         */
+        public int[] getStalestSector() {
+            Node tail_prev = tail.prev;
+            for (Map.Entry<Sector, Node> entry : map.entrySet()){
+                if (entry.getValue() == tail_prev){
+                    int[] index = {entry.getKey().getX(), entry.getKey().getY()};
+                    return index;
+                }
+            }
+            return null;
         }
     }
 }

@@ -50,6 +50,6 @@ public class GameOfLife {
         File file = new File("abs.text");
         FileInputStream stream = new FileInputStream(file);
         byte[][] boeard = new byte[3][100];
-        
+
     }
 }
