@@ -74,8 +74,5 @@ public class Nasa {
             return pos.img;
 
         }
-
-
-
     }
 }

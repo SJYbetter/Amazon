@@ -1,5 +1,9 @@
 package OA.Dropbox;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class GameOfLife {
     public void gameofLife(int[][] board){
         if (board == null || board.length == 0) return;
@@ -40,5 +44,12 @@ public class GameOfLife {
                 }
             }
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        File file = new File("abs.text");
+        FileInputStream stream = new FileInputStream(file);
+        byte[][] boeard = new byte[3][100];
+        
     }
 }

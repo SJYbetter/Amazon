@@ -1,6 +1,7 @@
 package OA.Dropbox;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
 
 public class FileAccess {
     public static boolean hasAccess(String filename, Map<String, String> map, Set<String> access){
@@ -21,22 +22,28 @@ public class FileAccess {
         return map;
     }
 
-    public static List<String> getAllAccessFile(String[][] files, Set<String> set){
+    public static Set<String> getAllAccessFile(String[][] files, Set<String> set){
         Map<String, List<String>> graph = fileGraph(files);
-        List<String> allAccessFiles = new ArrayList<>();
+        Set<String> allAccessFiles = new HashSet<>();
         for (String acc: set){
             allAccessFiles.add(acc);
-            dfs(acc, allAccessFiles, graph);
+            dfs(acc, allAccessFiles, graph, set);
         }
         return allAccessFiles;
 
     }
 
-    private static void dfs(String file, List<String> files, Map<String, List<String>> graph){
+    private static void dfs(String file, Set<String> files,
+                            Map<String, List<String>> graph,
+                            Set<String> access){
         if (!graph.containsKey(file)) return;
         for (String subFile: graph.get(file)){
-            //files.add(subFile);
-            dfs(subFile, files, graph);
+            files.add(subFile);
+            if (access.contains(subFile)){
+                access.remove(subFile);
+                System.out.println("remove no need access foler" + subFile);
+            }
+            dfs(subFile, files, graph, access);
         }
     }
 
@@ -58,11 +65,11 @@ public class FileAccess {
     public static void main(String[] args){
         String[][] folders = {{"A", null}, {"B", "A"}, {"C", "B"}, {"D", "B"},{"E", "A"},{"F", "E"}, {"G", "F"}};
         Map<String, String> graph = buildFileGraph(folders);
-        Set<String> access = new HashSet<>(Arrays.asList("C", "E"));
-        System.out.println(hasAccess("B", graph, access));
-        System.out.println(hasAccess("C", graph, access));
-        System.out.println(hasAccess("F", graph, access));
-        System.out.println(hasAccess("G", graph, access));
+        Set<String> access = new HashSet<>(Arrays.asList("C", "E", "G"));
+        //System.out.println(hasAccess("B", graph, access));
+        //System.out.println(hasAccess("C", graph, access));
+        //System.out.println(hasAccess("F", graph, access));
+        //System.out.println(hasAccess("G", graph, access));
 
 
         for (String file: getAllAccessFile(folders, access)){

@@ -39,8 +39,6 @@ public class DesignPhoneDictionary {
         if (!set.contains(num)) return;
         set.remove(num);
         queue.offer(num);
-
-
     }
 
 
