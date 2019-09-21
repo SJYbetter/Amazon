@@ -30,13 +30,14 @@ public class Nasa {
         }
     }
 */
+
     class Image {
         public Image(byte[] bytes) {
 
         }
-        public byte[] getBytes() {
+        //public byte[] getBytes() {
 
-        } // no more than 1MB in size
+         // no more than 1MB in size
     }
 
     class Sector {
@@ -74,7 +75,7 @@ public class Nasa {
         private Sector[][] pos;
         private Node head;
         private Node tail;
-        private Map<Sector, Node> map = new HashMap<>();
+        private Map<int[], Node> map = new HashMap<>();
 
         public SpacePanorama(int rows, int cols) {
             pos = new Sector[rows][cols];
@@ -85,7 +86,8 @@ public class Nasa {
         }
 
         private void moveToHead(Sector sector){
-            Node cur = map.get(sector);
+            int[] pos = {sector.getY(), sector.getX()};
+            Node cur = map.get(pos);
             Node next = head.next;
             head.next = cur;
             cur.prev = head;
@@ -101,7 +103,8 @@ public class Nasa {
         public void update(int y, int x, Image image) {
             Sector sector = pos[x][y];
             sector.img = image;
-            Node node = map.get(sector);
+            //int[] pos = {y,x};
+            //Node cur = map.get(pos);
             moveToHead(sector);
         }
 
@@ -119,13 +122,9 @@ public class Nasa {
          */
         public int[] getStalestSector() {
             Node tail_prev = tail.prev;
-            for (Map.Entry<Sector, Node> entry : map.entrySet()){
-                if (entry.getValue() == tail_prev){
-                    int[] index = {entry.getKey().getX(), entry.getKey().getY()};
-                    return index;
-                }
-            }
-            return null;
+            Sector sector = tail_prev.sector;
+            return new int[]{sector.getX(), sector.getY()};
+
         }
     }
 }
