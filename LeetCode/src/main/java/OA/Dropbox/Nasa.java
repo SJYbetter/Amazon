@@ -106,6 +106,8 @@ public class Nasa {
             //int[] pos = {y,x};
             //Node cur = map.get(pos);
             moveToHead(sector);
+            int[] pos = {y,x};
+            this.map.get(pos).sector = sector;
         }
 
         /**
