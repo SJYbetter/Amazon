@@ -75,7 +75,7 @@ public class Nasa {
         private Sector[][] pos;
         private Node head;
         private Node tail;
-        private Map<int[], Node> map = new HashMap<>();
+        private Map<Long, Node> map = new HashMap<>();
 
         public SpacePanorama(int rows, int cols) {
             pos = new Sector[rows][cols];
@@ -86,8 +86,9 @@ public class Nasa {
         }
 
         private void moveToHead(Sector sector){
-            int[] pos = {sector.getY(), sector.getX()};
-            Node cur = map.get(pos);
+            int x = sector.getX(), y = sector.getY();
+            long key = (long)x << 32 | y;
+            Node cur = map.get(key);
             Node next = head.next;
             head.next = cur;
             cur.prev = head;
@@ -106,8 +107,8 @@ public class Nasa {
             //int[] pos = {y,x};
             //Node cur = map.get(pos);
             moveToHead(sector);
-            int[] pos = {y,x};
-            this.map.get(pos).sector = sector;
+            long key = (long)x << 32 | y;
+            this.map.get(key).sector = sector;
         }
 
         /**
@@ -126,7 +127,6 @@ public class Nasa {
             Node tail_prev = tail.prev;
             Sector sector = tail_prev.sector;
             return new int[]{sector.getX(), sector.getY()};
-
         }
     }
 }
