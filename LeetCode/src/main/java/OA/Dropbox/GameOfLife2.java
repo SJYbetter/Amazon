@@ -92,7 +92,7 @@ public class GameOfLife2 {
     }
 
 
-    public void GameOfLife2(String in, String out, int nColumn) throws IOException {
+    public void GameOfLifeEntry(String in, String out, int nColumn) throws IOException {
         input = new FileInputStream(in);
         try {
             output = new FileOutputStream(out);
