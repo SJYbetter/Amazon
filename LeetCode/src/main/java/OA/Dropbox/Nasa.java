@@ -32,13 +32,17 @@ public class Nasa {
 */
 
     class Image {
+        byte[] bytes;
         public Image(byte[] bytes) {
+            this.bytes = bytes;
 
         }
-        //public byte[] getBytes() {
+        public byte[] getBytes() {
+            return this.bytes;
+        }
 
          // no more than 1MB in size
-    }
+       }
 
     class Sector {
         int x;
