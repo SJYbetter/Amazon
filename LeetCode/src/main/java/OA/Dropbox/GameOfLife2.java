@@ -92,7 +92,7 @@ public class GameOfLife2 {
     }
 
 
-    public void GameOfLife2(String in, String out, int nColumn) throws IOException {
+    public void DoGameOfLife2(String in, String out, int nColumn) throws IOException {
         input = new FileInputStream(in);
         try {
             output = new FileOutputStream(out);
@@ -110,16 +110,8 @@ public class GameOfLife2 {
         }
     }
 
-    public static void main(String[] argv) {
-        TreeMap<Integer, Integer> s = new TreeMap<>();
-        s.put(9, 9);
-        s.put(8, 8);
-        s.put(100, 100);
-        s.put(3,3);
-        s.put(6, 6);
-        while(s.size()>0){
-            System.out.println(s.remove(s.firstKey()));
-        }
+    public static void main(String[] argv) throws IOException {
+        new GameOfLife2().DoGameOfLife2("input.bin", "output.bin", 100);
 //        int[] dx = {1, -1, 0, 0, 1, -1, 1, -1};
 //        int[] dy = {1, -1, 1, -1, 0, 0, -1, 1};
 //
