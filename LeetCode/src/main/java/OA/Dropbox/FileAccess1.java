@@ -6,13 +6,13 @@ import java.util.*;
 //2. find all access file name
 //3. simply the access set
 public class FileAccess1 {
-    private String[][] folders;
+    //private String[][] folders;
     private Set<String> access;
     //private Map<String, List<String>> graph;
     private Map<String, String> map;
     //private List<String> allAccessFiles;
     public FileAccess1(String[][] folders, Set<String> access){
-        this.folders = folders;
+        //this.folders = folders;
         this.access = access;
         this.map = buildAccessMap(folders);
         //this.graph = buildGraph(folders);
@@ -47,7 +47,8 @@ public class FileAccess1 {
         if (access.contains(name)) return true;
         boolean upper = hasAccess(map.get(name));
         if (upper){
-            access.add(map.get(name));
+            //System.out.println("add file name" + map.get(name));
+            this.access.add(name);
         }
         return upper;
     }
@@ -55,7 +56,7 @@ public class FileAccess1 {
     public List<String> allAccessFiles(){
         List<String> ans = new ArrayList<>();
         for (String name: map.keySet()){
-            if (hasAccess(name)){
+            if (this.hasAccess(name)){
                 ans.add(name);
             }
         }
@@ -70,12 +71,25 @@ public class FileAccess1 {
         Set<String> res = new HashSet<>();
         for (String name: map.keySet()){
             String father = map.get(name);
-            if (hasAccess(father)) continue;
+            if (this.hasAccess(father)) continue;
             else if (access.contains(name)){
                 res.add(name);
             }
         }
         return res;
+
+    }
+
+    public List<String> simpleFiles(String[] allAccessfiles){
+        List<String> simple = new ArrayList<>();
+        for (String f: allAccessfiles){
+            String father = map.get(f);
+            if (access.contains(father)) continue;
+            else{
+                simple.add(f);
+            }
+        }
+        return simple;
 
     }
 
@@ -85,13 +99,31 @@ public class FileAccess1 {
 
         String[][] folders = {{"A", null}, {"B", "A"}, {"C", "B"}, {"D", "B"},{"E", "A"},{"F", "E"}, {"G", "F"}};
         Set<String> access = new HashSet<>(Arrays.asList("C", "E", "G"));
+
         FileAccess1 fa = new FileAccess1(folders, access);
+        fa.hasAccess("F");
         List<String> ans = fa.allAccessFiles();
         Set<String> simple = fa.simplyAccessFolder();
 
         System.out.println("ALL SIMPLE SET");
         for (String s: simple){
             System.out.println(s);
+        }
+
+
+        System.out.println("ACCESS SET");
+        for (String s: fa.access){
+            System.out.println(s);
+        }
+
+
+
+
+        System.out.println("ALL SIMPLE FOLDERS");
+        String[] acc = {"C" , "E", "F", "G"};
+        List<String> s = fa.simpleFiles(acc);
+        for (String a: s){
+            System.out.println(a);
         }
 
     }

@@ -49,7 +49,17 @@ public class GameOfLife {
     public static void main(String[] args) throws IOException {
         File file = new File("abs.text");
         FileInputStream stream = new FileInputStream(file);
-        byte[][] boeard = new byte[3][100];
+        byte[][] board = new byte[3][100];
+        for (int i = 0; i < 100; i ++){
+            int nbyte;
+            int start = 0;
+            while (start < 100){
+                if ((nbyte = stream.read(board[i], start, 100 - start)) == -1){
+                    break;
+                }
+                start += nbyte;
+            }
+        }
 
     }
 }
