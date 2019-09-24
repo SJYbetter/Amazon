@@ -88,7 +88,6 @@ public class FindDuplicateFile {
                 }
             }
         }
-
         return allFiles;
     }
 

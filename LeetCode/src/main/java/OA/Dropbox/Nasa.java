@@ -1,4 +1,5 @@
 package OA.Dropbox;
+import java.awt.*;
 import java.io.*;
 import java.util.*;
 
@@ -31,15 +32,20 @@ public class Nasa {
     }
 */
 
-    class Image {
-        byte[] bytes;
-        public Image(byte[] bytes) {
-            this.bytes = bytes;
+    class Image{
+        int id;
 
-        }
-        public byte[] getBytes() {
-            return this.bytes;
-        }
+
+
+        //int img;
+//        byte[] bytes;
+//      public Image(byte[] bytes) {
+//            this.bytes = bytes;
+
+  //      }
+    //    public byte[] getBytes() {
+       //     return this.bytes;
+     //   }
 
          // no more than 1MB in size
        }
@@ -65,7 +71,7 @@ public class Nasa {
     /**
      * row-major indexing to be consistent.
      */
-    public class SpacePanorama {
+    public static class SpacePanorama {
         /**
          * initializes the data structure. rows x cols y is the sector layout.
          * width, height can be as large as 1K each.
@@ -76,28 +82,37 @@ public class Nasa {
             Node prev;
         }
 
-        private Sector[][] pos;
+        //private Sector[][] pos;
         private Node head;
         private Node tail;
         private Map<Long, Node> map = new HashMap<>();
 
-        public SpacePanorama(int rows, int cols) {
-            pos = new Sector[rows][cols];
+        public SpacePanorama() {
+            //pos = new Sector[rows][cols];
             head = new Node();
             tail = new Node();
             head.next = tail;
             tail.prev = head;
         }
 
-        private void moveToHead(Sector sector){
-            int x = sector.getX(), y = sector.getY();
-            long key = (long)x << 32 | y;
-            Node cur = map.get(key);
-            Node next = head.next;
-            head.next = cur;
-            cur.prev = head;
-            cur.next = next;
-            next.prev = cur;
+        private void deleteNode(Node node){
+            Node front = node.prev;
+            Node end = node.next;
+            front.next = end;
+            end.prev = front;
+        }
+
+        private void addNodeTail(Node node){
+            Node cur = tail.prev;
+            node.prev = cur;
+            node.next = tail;
+            cur.next = node;
+            tail.prev = node;
+        }
+
+        private void moveToTail(Node node){
+            this.deleteNode(node);
+            this.addNodeTail(node);
         }
 
         /**
@@ -105,22 +120,30 @@ public class Nasa {
          * to report new imagery for the sector at (y, x)
          * Images can be up to 1MB in size.
          */
-        public void update(int y, int x, Image image) {
-            Sector sector = pos[x][y];
-            sector.img = image;
-            //int[] pos = {y,x};
-            //Node cur = map.get(pos);
-            moveToHead(sector);
-            long key = (long)x << 32 | y;
-            this.map.get(key).sector = sector;
+        public void update(int x, int y, Image image) {
+
+            long key = (long) x << 32 | y;
+            Node node = map.get(key);
+            if (node == null) {
+                Node newNode = new Node();
+                newNode.sector.x = x;
+                newNode.sector.y = y;
+                newNode.sector.img = image;
+                map.put(key, newNode);
+                this.addNodeTail(newNode);
+            } else {
+                //Node node = this.map.get(key);
+                node.sector.img = image;
+                this.moveToTail(node);
+            }
         }
 
         /**
          * NASA will occasionally call this to check the view of a particular sector.
          */
-        public Image fetch(int y, int x) {
-            Sector sector = pos[y][x];
-            return sector.img;
+        public Image fetch(int x, int y) {
+            long key = (long)x << 32 | y;
+            return map.get(key).sector.img;
         }
 
         /**
@@ -132,5 +155,21 @@ public class Nasa {
             Sector sector = tail_prev.sector;
             return new int[]{sector.getX(), sector.getY()};
         }
+    }
+
+    public static void main(String[] args){
+
+        //imgs[1].id = 1;
+        Image img1 = new Image(1);
+
+        SpacePanorama nasa = new SpacePanorama();
+        nasa.update(1,1, new Image(1));
+        //nasa.update(1,3, imgs[3]);
+        //nasa.update(1,4, imgs[4]);
+
+        Image img = nasa.fetch(1,1);
+        System.out.println(img.id);
+
+
     }
 }
