@@ -1,24 +1,21 @@
 package OA.Dropbox;
 
 
-/*
-import com.sun.tools.javac.util.Convert;
-
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class FindDuplicateFile {
-    public List<List<String>> findDuplicates(String path){
+    public List<List<String>> findDuplicates(String path) throws IOException, NoSuchAlgorithmException {
         List<List<String>> res = new ArrayList<>();
 
         if (path == null || "".equals(path)) return res;
         List<String> filePaths = getAllFiles(path);
         Map<String, List<String>> map = new HashMap<>();
-
         for (String p: filePaths){
             File file = new File(p);
             String hashCode = hashFile(file, "MD5");
@@ -34,12 +31,10 @@ public class FindDuplicateFile {
             }
         }
         return res;
-
-
     }
 
 
-    private static String hashFile(File file, String algorithm){
+    private static String hashFile(File file, String algorithm) throws IOException, NoSuchAlgorithmException {
 
         FileInputStream inputStream = new FileInputStream(file);
 
@@ -60,8 +55,16 @@ public class FindDuplicateFile {
     }
 
 
-    private void read1KB(String path){
-        if ()
+    private void read1KB(String path) throws IOException {
+        File file = new File(path);
+        FileInputStream fis = new FileInputStream(file);
+        byte[] buffer = new byte[1024];
+        int count;
+        while((count=fis.read(buffer))!=-1) {
+            // hash(buffer);
+            System.out.print(buffer);
+            count = fis.read(buffer);
+        }
     }
 
 
@@ -72,7 +75,6 @@ public class FindDuplicateFile {
     private static List<String> getAllFiles(String path){
         List<String> allFiles = new ArrayList<>();
         Stack<String> stack = new Stack<>();
-
         stack.push(path);
         while (!stack.isEmpty()){
             String curPath = stack.pop();
@@ -86,11 +88,10 @@ public class FindDuplicateFile {
                 }
             }
         }
-
         return allFiles;
     }
 
-    public static List<List<String>> getDuplicateFilesBySize(String root){
+    public static List<List<String>> getDuplicateFilesBySize(String root) throws IOException, NoSuchAlgorithmException {
         List<List<String>> res = new ArrayList<>();
         if (root == null || "".equals(root)) return res;
         Map<Long, List<String>> mapSize = getAllFileBySize(root);
@@ -99,7 +100,7 @@ public class FindDuplicateFile {
             if (path.size() < 2) continue;
             for (String p: path){
                 File f = new File(p);
-                String hashCode = hashFile(f, "md5");
+                String hashCode = hashFile(f, "MD5");
                 if (!duplicateMap.containsKey(hashCode)){
                     duplicateMap.put(hashCode, new ArrayList<>());
                 }
@@ -142,4 +143,4 @@ public class FindDuplicateFile {
 
 
 
- */
+

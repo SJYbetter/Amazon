@@ -8,11 +8,13 @@ import java.util.*;
 public class FileAccess1 {
     //private String[][] folders;
     private Set<String> access;
+    private Set<String> nonAccess;
     //private Map<String, List<String>> graph;
     private Map<String, String> map;
     //private List<String> allAccessFiles;
     public FileAccess1(String[][] folders, Set<String> access){
         //this.folders = folders;
+        //this.nonAccess = nonAccess;
         this.access = access;
         this.map = buildAccessMap(folders);
         //this.graph = buildGraph(folders);
@@ -45,9 +47,13 @@ public class FileAccess1 {
     public boolean hasAccess(String name){
         if (name == null) return false;
         if (access.contains(name)) return true;
-        boolean upper = hasAccess(map.get(name));
+        //if (nonAccess.contains(name)) return false;
+        String father = map.get(name);
+        //if (access.contains(father) && nonAccess.contains(name))
+        boolean upper = hasAccess(father);
         if (upper){
             //System.out.println("add file name" + map.get(name));
+            if (nonAccess.contains(name)) return false;
             this.access.add(name);
         }
         return upper;
@@ -67,16 +73,15 @@ public class FileAccess1 {
     }
 
 
-    public Set<String> simplyAccessFolder(){
-        Set<String> res = new HashSet<>();
+    public void simplyAccessFolder(){
+        //Set<String> res = new HashSet<>();
         for (String name: map.keySet()){
             String father = map.get(name);
-            if (this.hasAccess(father)) continue;
-            else if (access.contains(name)){
-                res.add(name);
+            if (this.hasAccess(father)){
+                access.remove(name);
             }
         }
-        return res;
+
 
     }
 
@@ -98,17 +103,19 @@ public class FileAccess1 {
     public static void main(String[] args){
 
         String[][] folders = {{"A", null}, {"B", "A"}, {"C", "B"}, {"D", "B"},{"E", "A"},{"F", "E"}, {"G", "F"}};
-        Set<String> access = new HashSet<>(Arrays.asList("C", "E", "G"));
+        Set<String> access = new HashSet<>(Arrays.asList("C", "E", "F"));
+        //Set<String> nonAccess = new HashSet<>(Arrays.asList("G"));
 
         FileAccess1 fa = new FileAccess1(folders, access);
-        fa.hasAccess("F");
+        //fa.hasAccess("F");
         List<String> ans = fa.allAccessFiles();
-        Set<String> simple = fa.simplyAccessFolder();
+       // Set<String> simple = fa.simplyAccessFolder();
 
         System.out.println("ALL SIMPLE SET");
-        for (String s: simple){
+        for (String s: access){
             System.out.println(s);
         }
+
 
 
         System.out.println("ACCESS SET");
