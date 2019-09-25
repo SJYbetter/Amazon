@@ -92,7 +92,7 @@ public class GameOfLife2 {
     }
 
 
-    public void DoGameOfLife2(String in, String out, int nColumn) throws IOException {
+    public void GameOfLifeEntry(String in, String out, int nColumn) throws IOException {
         input = new FileInputStream(in);
         try {
             output = new FileOutputStream(out);
@@ -111,7 +111,7 @@ public class GameOfLife2 {
     }
 
     public static void main(String[] argv) throws IOException {
-        new GameOfLife2().DoGameOfLife2("input.bin", "output.bin", 100);
+        new GameOfLife2().GameOfLifeEntry("input.bin", "output.bin", 100);
 //        int[] dx = {1, -1, 0, 0, 1, -1, 1, -1};
 //        int[] dy = {1, -1, 1, -1, 0, 0, -1, 1};
 //
