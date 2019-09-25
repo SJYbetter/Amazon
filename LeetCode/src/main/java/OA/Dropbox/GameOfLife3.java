@@ -14,11 +14,11 @@ public class GameOfLife3 {
         this.board = board;
         this.nColumn = nColumn;
     }
-
+    //get position
     private byte get( int x, int y ){
         return board.get(x * nColumn + y);
     }
-
+    //set value
     private  void set(int x, int y, int value) {
         board.put(x * nColumn + y, (byte) value);
     }
