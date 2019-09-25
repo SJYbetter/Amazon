@@ -34,9 +34,6 @@ public class Nasa {
 
     class Image{
         int id;
-
-
-
         //int img;
 //        byte[] bytes;
 //      public Image(byte[] bytes) {

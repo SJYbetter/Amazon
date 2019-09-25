@@ -12,9 +12,9 @@ public class FileAccess1 {
     //private Map<String, List<String>> graph;
     private Map<String, String> map;
     //private List<String> allAccessFiles;
-    public FileAccess1(String[][] folders, Set<String> access , Set<String> nonAccess){
+    public FileAccess1(String[][] folders, Set<String> access){
         //this.folders = folders;
-        this.nonAccess = nonAccess;
+        //this.nonAccess = nonAccess;
         this.access = access;
         this.map = buildAccessMap(folders);
         //this.graph = buildGraph(folders);
@@ -104,10 +104,10 @@ public class FileAccess1 {
 
         String[][] folders = {{"A", null}, {"B", "A"}, {"C", "B"}, {"D", "B"},{"E", "A"},{"F", "E"}, {"G", "F"}};
         Set<String> access = new HashSet<>(Arrays.asList("C", "E", "F"));
-        Set<String> nonAccess = new HashSet<>(Arrays.asList("G"));
+        //Set<String> nonAccess = new HashSet<>(Arrays.asList("G"));
 
-        FileAccess1 fa = new FileAccess1(folders, access, nonAccess);
-        fa.hasAccess("F");
+        FileAccess1 fa = new FileAccess1(folders, access);
+        //fa.hasAccess("F");
         List<String> ans = fa.allAccessFiles();
        // Set<String> simple = fa.simplyAccessFolder();
 
