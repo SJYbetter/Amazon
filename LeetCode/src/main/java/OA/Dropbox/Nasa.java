@@ -32,7 +32,7 @@ public class Nasa {
     }
 */
 
-    class Image{
+    static class Image{
         int id;
         //int img;
 //        byte[] bytes;
