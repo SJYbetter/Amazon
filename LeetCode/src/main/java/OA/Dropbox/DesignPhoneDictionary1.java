@@ -7,8 +7,8 @@ public class DesignPhoneDictionary1 {
     int max;
 
     public DesignPhoneDictionary1(int maxNumber){
-        bitset = new BitSet(maxNumber);
-        max = maxNumber;
+        this.bitset = new BitSet(maxNumber);
+        this.max = maxNumber;
     }
 
     public int get(){

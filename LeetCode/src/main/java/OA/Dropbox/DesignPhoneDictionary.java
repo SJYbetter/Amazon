@@ -30,6 +30,7 @@ public class DesignPhoneDictionary {
 
     public boolean check(int num){
         if (num < 0 || num >= maxNumber) return false;
+        //this number is already used
         if (set.contains(num)) return false;
         return true;
     }
