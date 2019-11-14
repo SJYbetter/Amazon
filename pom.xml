@@ -14,8 +14,7 @@
     </properties>
 
     <modules>
-        <module>algorithm</module>
-        <module>Problems</module>
+        <module>LeetCode</module>
     </modules>
     <dependencies>
         <dependency>
